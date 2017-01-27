@@ -227,7 +227,7 @@ When using the interactive terminal, this is an example of expected behavior:
 
 [wordnet home]: http://wordnet.princeton.edu/
 <!-- TODO: Add actual cloning directions -->
-[cloning instructions]: .
+[cloning instructions]: ../git_cheatsheet.md
 [sample graph]: image-resources/sample-graph.png
 [ancestry example]: image-resources/ancestry-example.png
 [symbol documentation]: https://ruby-doc.org/core-2.3.0/Symbol.html
