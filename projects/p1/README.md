@@ -11,7 +11,7 @@ Project Files
 To begin this project (and all other projects for this course), you will need to clone the git repository. [Click here for directions on cloning the repository.][cloning instructions] The following are the relevant files:
 <!-- TODO add the real files to the document and ensure that they're correct -->
 - Ruby Files
-  - **graph.rb**: A simple graph implementation for use in your WordNet. This has been completed for you.
+  - **graph.rb**: A simple graph implementation for use in your WordNet. This has been completed for you, and is optional to use.
   - **wordnet.rb**: Contains a skeleton implementation of the three classes that you will complete for this project.
   - **interactive.rb**: A frontend that utilizes the methods you have written to interface with WordNet. This has been completed for you, though it will not be functional until your WordNet is implemented.
 - Submission Scripts
