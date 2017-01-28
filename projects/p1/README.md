@@ -1,6 +1,6 @@
 # Project 1: WordNet
 CMSC 330, Spring 2017  
-Due Monday, February 6th 2017
+Due Monday, February 13th 2017
 
 Introduction
 ------------
