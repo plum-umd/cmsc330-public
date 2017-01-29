@@ -223,6 +223,26 @@ When using the interactive terminal, this is an example of expected behavior:
 
 **Behavior**: The lca command takes two synset ids as arguments and looks up their least common ancestors. The `:result` field should be set to the result of calling `lca : (Integer, Integer)`, or `:error` if the command is misformed (i.e. wrong number of arguments or the arguments are not valid Integers).
 
+Project Submission
+------------------
+You should submit a file `wordnet.rb` containing your solution. You may submit other files, but they will be ignored during grading. We will run your solution as MiniTest test units, just as in the provided public test file.
+
+Be sure to follow the project description exactly! Your solution will be graded automatically, so any deviation from the specification will result in lost points.
+
+You can submit your project in two ways:
+- Submit your `wordnet.rb` file directly to the [submit server][submit server] by clicking on the submit link in the column "web submission".
+![Where to find the web submission link][web submit link]  
+Then, use the submit dialog to submit your `wordnet.rb` file directly.
+![Where to upload the file][web upload example]  
+Select your file using the "Browse" button, then press the "Submit project!" button. You **do not** need to put it in a zip file.
+- Submit directly by executing a the submission script on a computer with Java and network access. Included in this project are the submission scripts and related files listed under **Project Files**. These files should be in the directory containing your project. From there you can either execute submit.rb or run the command `java -jar submit.jar` directly (this is all submit.rb does).
+
+No matter how you choose to submit your project, make sure that your submission is received by checking the [submit server][submit server] after submitting.
+
+Academic Integrity
+------------------
+Please **carefully read** the academic honesty section of the course syllabus. **Any evidence** of impermissible cooperation on projects (**this *IS NOT* a group project**), use of disallowed materials or resources, or unauthorized use of computer accounts, **will be** submitted to the Student Honor Council, which could result in an XF for the course, or suspension or expulsion from the University. Be sure you understand what you are and what you are not permitted to do in regards to academic integrity when it comes to project assignments. These policies apply to all students, and the Student Honor Council does not consider lack of knowledge of the policies to be a defense for violating them. Full information is found in the course syllabus, which you should review before starting.
+
 <!-- Link References -->
 
 [wordnet home]: http://wordnet.princeton.edu/
@@ -232,3 +252,6 @@ When using the interactive terminal, this is an example of expected behavior:
 [ancestry example]: image-resources/ancestry-example.png
 [symbol documentation]: https://ruby-doc.org/core-2.3.0/Symbol.html
 [interactive example]: image-resources/interactive-example.png
+[submit server]: submit.cs.umd.edu
+[web submit link]: image-resources/web_submit.jpg
+[web upload example]: image-resources/web_upload.jpg
