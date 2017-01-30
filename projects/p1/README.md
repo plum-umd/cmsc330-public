@@ -190,7 +190,7 @@ The commands that you will need to parse are as follows:
 
 You may add any methods you need to any of the provided classes in order to validate these criteria.
 
-The `:result` field should be set to `true` in case of success and `false` in case of failure according to the criteria above.
+The `:result` field should be set to `true` in case of success and `false` in case of failure according to the criteria above. If the command is misformed or additional arguments are supplied, then set `:result` to `:error`.
 
 When using the interactive terminal, this is an example of expected behavior:
 ![An example of the interactive terminal][interactive example]
