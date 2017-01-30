@@ -2,6 +2,8 @@
 CMSC 330, Spring 2017  
 Due Monday, February 13th 2017
 
+Pair Project
+------------
 This is a pair project. You may work on this with another student from any section of CMSC330. Be sure you include both your name and your partner's name in the solution that you submit. 
 
 Introduction
