@@ -215,7 +215,7 @@ When using the interactive terminal, this is an example of expected behavior:
 #### findmany
 **Recognized Command**: `:findmany`
 
-**Command Format**: `find <noun1>[,<noun2>,<noun3>...]`
+**Command Format**: `findmany <noun1>[,<noun2>,<noun3>...]`
 
 **Behavior**: The findmany command sets `:result` to the result of `findSynsets : Object` called with **one or more** nouns passed as an Array. The list of nouns will be comma separated with no whitespace just as in a valid input file. If the form of the list isn't valid or additional arguments are supplied, then set `:result` to `:error`.
 
