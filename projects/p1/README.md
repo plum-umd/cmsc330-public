@@ -2,6 +2,8 @@
 CMSC 330, Spring 2017  
 Due Monday, February 13th 2017
 
+This is a pair project. You may work on this with another student from any section of CMSC330. Be sure you include both your name and your partner's name in the solution that you submit. 
+
 Introduction
 ------------
 [WordNet][wordnet home] is a semantic lexicon for the English language that is used extensively by computational linguists and cognitive scientists. WordNet groups words into sets of synonyms called *synsets* and describes semantic relationships between them. Relevant to this project is the *is-a* relationship, which connects a *hyponym* (more specific synset) to a *hypernym* (more general synset). For example, a plant organ is a hypernym to plant root and plant root is a hypernym to carrot.
