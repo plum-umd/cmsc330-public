@@ -34,7 +34,7 @@ The WordNet is represented by two files which must each be formed as described b
 ### Synsets File
 The synsets file is a list of all of the synsets in WordNet (i.e. the vertices of the graph above). A synset is a list of nouns that share the same meaning. Each line of a valid synsets file consists of two fields:
 - **Synset id**: A non-negative integer identifying the synset.
-- **Synset**: A comma-delimited list of one or more nouns that belong to the synset. Nouns are made up of letters (uppercase and lowercase), numbers, underscores, dashes, periods, apostrophes, and forward slashes. These criterea will always define valid nouns wherever valid nouns are referenced in this document.
+- **Synset**: A comma-delimited list of one or more nouns that belong to the synset. Nouns are made up of letters (uppercase and lowercase), numbers, underscores, dashes, periods, apostrophes, and forward slashes. These criteria will always define valid nouns wherever valid nouns are referenced in this document.
 
 **Note**: A noun can appear in more than one synset. A noun will appear once for each meaning the noun has. For example, all of the following synsets contain the noun "word", but with different meanings.
 ```
@@ -173,7 +173,7 @@ end
 
 All you must implement for the `CommandParser` class is the method `parse(command)`. This method is given a String command and is responsible for performing an action and providing a response. A command may contain arbitrary leading and trailing whitespace, and arguments may be separated by one or more whitespace characters. A response is represented as a hash with entries as follows:
 - **:recognized_command** *(the leading colon is intentional; [this is a symbol, not a String][symbol documentation])*: This will vary based on the command, but the purpose is to identify how to process the data portion of the response. Each command section that follows will clearly specify what to set this field to. If the command is not recognized, set the value to `:invalid`.
-- **:result**: This key's value will correspond to whatever data the is the result of processing the command.
+- **:result**: This key's value will correspond to the resulting data after processing the command.
 
 The commands that you will need to parse are as follows:
 
@@ -188,9 +188,9 @@ The commands that you will need to parse are as follows:
 - The hypernym file is valid
 - All synsets referenced by the hypernym file are defined in the synsets file or in the already-loaded synsets of the contained `Synsets` object (remember, multiple loads augment the data instead of replacing it).
 
-You may add any methods you need to any of the provided classes in order to validate these criterea.
+You may add any methods you need to any of the provided classes in order to validate these criteria.
 
-The data field should be set to `true` in case of success and `false` in case of failure according to the critera above.
+The `:result` field should be set to `true` in case of success and `false` in case of failure according to the criteria above.
 
 When using the interactive terminal, this is an example of expected behavior:
 ![An example of the interactive terminal][interactive example]
