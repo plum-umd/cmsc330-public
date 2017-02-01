@@ -111,7 +111,7 @@ If all lines of the file are properly formed as described in the file format sec
 
 ### Lookup Operations
 
-The method `lookup(synset_id)` should take a synset id and return an array of the nouns in the synset. If there is no entry for the requested noun, return an empty array.
+The method `lookup(synset_id)` should take a synset id and return an array of the nouns in the synset. If there is no entry for the requested id, return an empty array.
 
 The method `findSynsets(to_find)` will behave differently depending on if it is given a String or an Array as its argument.
 - **String**: When supplied a String, this method should return an array of 0 or more synset ids corresponding to synsets containing this noun.
