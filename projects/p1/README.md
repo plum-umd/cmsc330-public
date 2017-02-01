@@ -183,7 +183,7 @@ The commands that you will need to parse are as follows:
 
 **Command Format**: `load <synset_file> <hypernym_file>`
 
-**Behavior**: The load command takes two arguments, the synset file name and the hypernym file name respectively. File names may contain word characters (i.e. letters, numbers, and underscores) as well as dashes and periods and must be validated as part of checking the structure of the command. The files should be load into `Synsets` object and the `Hypernyms` objects using their `load : (String)` methods. Neither object should be modified unless all the following conditions are met:
+**Behavior**: The load command takes two arguments, the synset file name and the hypernym file name respectively. File names may contain word characters (i.e. letters, numbers, and underscores) as well as forward slashes, dashes, and periods and must be validated as part of checking the structure of the command. The files should be load into `Synsets` object and the `Hypernyms` objects using their `load : (String)` methods. Neither object should be modified unless all the following conditions are met:
 - The synset file is valid
 - The hypernym file is valid
 - All synsets referenced by the hypernym file are defined in the synsets file or in the already-loaded synsets of the contained `Synsets` object (remember, multiple loads augment the data instead of replacing it).
