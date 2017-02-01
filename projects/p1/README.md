@@ -201,7 +201,7 @@ When using the interactive terminal, this is an example of expected behavior:
 
 **Command Format**: `lookup <synset_id>`
 
-**Behavior**: The lookup command takes exactly one synset id as an argument and sets `:result` to whatever is returned by calling `lookup : (Integer)` on the `Synsets` object.
+**Behavior**: The lookup command takes exactly one synset id as an argument and sets `:result` to whatever is returned by calling `lookup : (Integer)` on the `Synsets` object. If the synset id isn't properly formed (by the same rules as the synset input file) or the wrong number of arguments is supplied then `:result` should be set to `:error`.
 
 ---
 #### find
