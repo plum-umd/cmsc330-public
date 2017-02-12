@@ -6,7 +6,7 @@ Ground Rules
 ------------
 Unlike project 1, this is NOT a pair project. You must work on this project alone as with most other CS projects. See the Academic Integrity section for more information.
 
-In your code, you may only use library functions found in the [`Pervasives` module][pervasives doc].
+In your code, you may only use library functions found in the [`Pervasives` module][pervasives doc]. You may not use any imperative structures of OCaml such as references.
 
 Introduction
 ------------
@@ -49,6 +49,7 @@ Implement the following simple functions. No recursion is needed.
 ```
 mult_of_y 5 10 = true
 mult_of_y 0 10 = false
+mult_of_y 15 0 = false
 mult_of_y 10 10 = true
 mult_of_y 20 10 = false
 ```
