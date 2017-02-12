@@ -240,7 +240,7 @@ You should submit a file `basics.ml` containing your solution. You may submit ot
 Be sure to follow the project description exactly! Your solution will be graded automatically, so any deviation from the specification will result in lost points.
 
 You can submit your project in two ways:
-- Submit your `wordnet.rb` file directly to the [submit server][submit server] by clicking on the submit link in the column "web submission".
+- Submit your `basics.ml` file directly to the [submit server][submit server] by clicking on the submit link in the column "web submission".
 ![Where to find the web submission link][web submit link]  
 Then, use the submit dialog to submit your `wordnet.rb` file directly.
 ![Where to upload the file][web upload example]  
