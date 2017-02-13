@@ -30,18 +30,18 @@ let rec index x lst = failwith "unimplemented"
 (* Part 3: Sets *)
 (****************)
 
-let rec insert x = failwith "unimplemented"
+let rec insert x a = failwith "unimplemented"
 
-let rec eq xs ys = failwith "unimplemented"
+let rec eq a b = failwith "unimplemented"
 
-let rec card = failwith "unimplemented"
+let rec card a = failwith "unimplemented"
 
-let rec elem x = failwith "unimplemented"
+let rec elem x a = failwith "unimplemented"
 
-let rec remove x = failwith "unimplemented"
+let rec remove x a = failwith "unimplemented"
 
-let rec union xs ys = failwith "unimplemented"
+let rec union a b = failwith "unimplemented"
 
-let rec intersection xs ys = failwith "unimplemented"
+let rec intersection a b = failwith "unimplemented"
 
-let rec subset xs ys = failwith "unimplemented"
+let rec subset a b = failwith "unimplemented"
