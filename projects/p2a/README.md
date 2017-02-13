@@ -26,7 +26,7 @@ To begin this project, you will need to commit any uncommitted changes to your l
 - Submission Scripts and Other Files
   - **submit.rb**: Execute this script to submit your project to the submit server.
   - **submit.jar** and **.submit**: Don't worry about these files, but make sure you have them.
-  - **Makefile**: This is used to build the public tests simply running the command `make`, just as in 216.
+  - **Makefile**: This is used to build the public tests by simply running the command `make`, just as in 216.
 
 Notes on P2A and OCaml
 ----------------------
@@ -47,11 +47,11 @@ Implement the following simple functions. No recursion is needed.
 - **Description**: Returns `true` if `x` is a multiple of `y`, `false` otherwise.
 - **Examples:**
 ```
-mult_of_y 5 10 = true
-mult_of_y 0 10 = false
+mult_of_y 5 10 = false 
+mult_of_y 0 10 = true
 mult_of_y 15 0 = false
 mult_of_y 10 10 = true
-mult_of_y 20 10 = false
+mult_of_y 20 10 = true
 ```
 
 #### head_divisor lst
@@ -118,9 +118,9 @@ get_val (-1) [6;5;7;8] = -1
 - **Description**: Returns a list where the values correspond to the items found at each index of `lst` listed in `is`, or -1 for each out of bound index.
 - **Examples:**
 ```
-get_vals [5;6;7;3] [2;0] = [7;5] 
-get_vals [5;6;7;3] [2;4] = [7;-1]
-get_vals [5;6;7;3] [] = []
+get_vals [2;0] [5;6;7;3] = [7;5] 
+get_vals [2;4] [5;6;7;3] = [7;-1]
+get_vals [] [5;6;7;3] = []
 ```
 
 #### list_swap_val lst x y
@@ -140,7 +140,7 @@ list_swap_val [] 5 7 = []
 - **Examples:**
 ```
 index 1 [1;2] = 0 
-index "bat" ["apple";"bat";"cat";"door"] = 1
+index "bat" ["apple";"bat";"bat";"door"] = 1
 index 5 [1;2;3] = -1
 ```
 
@@ -152,6 +152,16 @@ For this part of the project, you will get some real-world practice implementing
 For this project, we assume that sets are unordered, homogeneous collections of objects without duplicates. The homogeneity condition ensures that sets can be represented by OCaml lists, which are homogeneous. The only further assumptions we make about your implementation are that the empty list represents the empty set, and that it obeys the standard laws of set theory. For example, if we insert an element `x` into a set `a`, then ask whether `x` is an element of `a`, your implementation should answer affirmatively. If we take the intersection of two disjoint sets `a` and `b`, then ask whether any member of `a` or `b` is a member of the intersection, your implementation should answer negatively.
 
 Finally, note the difference between a collection and its implementation. Although *sets* are unordered and contain no duplicates, your implementation may be ordered or contain duplicates. However, there should be no observable difference between an implementation that maintains uniqueness of elements and one that does not; or an implementation that maintains elements in sorted order and one that does not.
+
+#### insert x a
+- **Type**: `'a -> 'a list -> 'a list`
+- **Description**: Inserts `x` into the set `a`.
+- **Examples:**
+```
+insert 2 []
+insert 3 (insert 2 [])
+insert 3 (insert 3 (insert 2 []))
+```
 
 #### eq a b
 - **Type**: `'a list -> 'a list -> bool`
@@ -181,16 +191,6 @@ card (insert 2 (insert 3 [])) = 2
 elem 2 [] = false
 elem 3 (insert 5 (insert 3 (insert 2 []))) = true
 elem 4 (insert 3 (insert 2 (insert 5 []))) = false
-```
-
-#### insert x a
-- **Type**: `'a -> 'a list -> 'a list`
-- **Description**: Inserts `x` into the set `a`.
-- **Examples:**
-```
-card (insert 3 (insert 3 (insert 2))) = 2
-elem 5 (insert 5 (insert 2 (insert 3 []))) = true
-elem 5 (insert 7 (insert 2 (insert 3 []))) = false
 ```
 
 #### remove x a
@@ -243,7 +243,7 @@ Be sure to follow the project description exactly! Your solution will be graded 
 You can submit your project in two ways:
 - Submit your `basics.ml` file directly to the [submit server][submit server] by clicking on the submit link in the column "web submission".
 ![Where to find the web submission link][web submit link]  
-Then, use the submit dialog to submit your `wordnet.rb` file directly.
+Then, use the submit dialog to submit your `basics.ml` file directly.
 ![Where to upload the file][web upload example]  
 Select your file using the "Browse" button, then press the "Submit project!" button. You **do not** need to put it in a zip file.
 - Submit directly by executing a the submission script on a computer with Java and network access. Included in this project are the submission scripts and related files listed under **Project Files**. These files should be in the directory containing your project. From there you can either execute submit.rb or run the command `java -jar submit.jar` directly (this is all submit.rb does).
