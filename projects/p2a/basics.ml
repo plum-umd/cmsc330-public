@@ -30,13 +30,13 @@ let rec index x lst = failwith "unimplemented"
 (* Part 3: Sets *)
 (****************)
 
-let eq xs ys = failwith "unimplemented"
+let rec insert x = failwith "unimplemented"
+
+let rec eq xs ys = failwith "unimplemented"
 
 let rec card = failwith "unimplemented"
 
 let rec elem x = failwith "unimplemented"
-
-let rec insert x = failwith "unimplemented"
 
 let rec remove x = failwith "unimplemented"
 
