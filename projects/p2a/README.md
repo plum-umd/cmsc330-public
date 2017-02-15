@@ -228,7 +228,7 @@ eq (intersection (insert 3 (insert 5 (insert 2 []))) (insert 4 (insert 3 (insert
 - **Description**: Return true iff `a` is a subset of `b` - i.e., `x` is an element of `a` implies `x` is an element of `b`.
 - **Examples:**
 ```
-subset (insert 2 (insert 4 [])) = false
+subset (insert 2 (insert 4 [])) [] = false
 subset (insert 5 (insert 3 [])) (insert 3 (insert 5 (insert 2 []))) = true
 subset (insert 5 (insert 3 (insert 2 []))) (insert 5 (insert 3 [])) = false
 ```
