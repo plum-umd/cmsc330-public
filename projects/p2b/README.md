@@ -8,7 +8,7 @@ This is **NOT** a pair project. You must work on this project alone as with most
 
 In your code, you may only use library functions found in the [`Pervasives` module][pervasives doc] and the functions provided in `funs.ml`. You may not use any imperative structures of OCaml such as references.
 
-At a few points in this document, it will be requested that you raise an `Invalid_argument` exception. To raise an exception in OCaml, use the function `raise: exn -> 'a`. The argument `exn` is the exception to raise, and `Invalid_argument` is part of the `exn` data type. The return value is `'a` in order to match to surrounding branch types and can therefore be ignored. In order to raise an `Invalid_argument` exception with the message, "something went wrong", the following line of code would suffice:
+At a few points in this document, it will be requested that you raise an `Invalid_argument` exception. To raise an exception in OCaml, use the function `raise : exn -> 'a`. The argument `exn` is the exception to raise, and `Invalid_argument` is part of the `exn` data type. The return value is `'a` in order to match to surrounding branch types and can therefore be ignored. In order to raise an `Invalid_argument` exception with the message, "something went wrong", the following line of code would suffice:
 ```
 raise (Invalid_argument("something went wrong"))
 ```
