@@ -52,19 +52,19 @@ let test_elem ctxt =
   assert_false @@ elem 4 (create_set [2;3;5;7;9])
 
 let test_remove ctxt =
-  assert_set_equal [] @@ remove 5 (create_set []);
-  assert_set_equal [2;3;7;9] @@ remove 5 (create_set [2;3;5;7;9]);
-  assert_set_equal [2;3;5;7;9] @@ remove 4 (create_set [2;3;5;7;9])
+  assert_set_equal (create_set []) @@ remove 5 (create_set []);
+  assert_set_equal (create_set [2;3;7;9]) @@ remove 5 (create_set [2;3;5;7;9]);
+  assert_set_equal (create_set [2;3;5;7;9]) @@ remove 4 (create_set [2;3;5;7;9])
 
 let test_union ctxt =
-  assert_set_equal [2;3;5] @@ union (create_set []) (create_set [2;3;5]);
-  assert_set_equal [2;3;5;7;9] @@ union (create_set [2;5]) (create_set [3;7;9]);
-  assert_set_equal [2;3;7;9] @@ union (create_set [2;3;9]) (create_set [2;7;9])
+  assert_set_equal (create_set [2;3;5]) @@ union (create_set []) (create_set [2;3;5]);
+  assert_set_equal (create_set [2;3;5;7;9]) @@ union (create_set [2;5]) (create_set [3;7;9]);
+  assert_set_equal (create_set [2;3;7;9]) @@ union (create_set [2;3;9]) (create_set [2;7;9])
 
 let test_intersection ctxt =
-  assert_set_equal [] @@ intersection (create_set [2;3;5]) (create_set []);
-  assert_set_equal [] @@ intersection (create_set [3;7;9]) (create_set [2;5]);
-  assert_set_equal [5] @@ intersection (create_set [2;5;9]) (create_set [3;5;7]) 
+  assert_set_equal (create_set []) @@ intersection (create_set [2;3;5]) (create_set []);
+  assert_set_equal (create_set []) @@ intersection (create_set [3;7;9]) (create_set [2;5]);
+  assert_set_equal (create_set [5]) @@ intersection (create_set [2;5;9]) (create_set [3;5;7]) 
 
 let test_subset ctxt =
   assert_true @@ subset (create_set []) (create_set [2;3;5;7;9]);
