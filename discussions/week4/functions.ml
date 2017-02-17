@@ -57,7 +57,7 @@ let squaresum l = failwith "unimplemented"
 (*
  * compose fl x : (int -> int) list -> int -> int
  *      Returns the composition of all functions in fl
- *      applied to x in reverse order, i.e., f(g(h(x))
+ *      applied to x in reverse order, i.e., h(g(f(x)))
  *)
 
 let compose fl x = failwith "unimplemented"
