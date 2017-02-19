@@ -1,6 +1,8 @@
 open Funs
 
-(* Part 1: Higher order functions *)
+(********************************)
+(* Part 1: High Order Functions *)
+(********************************)
 
 let count e lst = failwith "unimplemented"
 
@@ -12,7 +14,9 @@ let pairup lst1 lst2 = failwith "unimplemented"
 
 let concat_lists lst = failwith "unimplemented"
 
-(* Part 2: Programming with datatypes *)
+(***********************)
+(* Part 2: Integer BST *)
+(***********************)
 
 type int_tree =
     IntLeaf
@@ -34,7 +38,7 @@ let rec int_mem x t =
     | IntNode (y,l,r) when x = y -> true
     | IntNode (y,l,r) -> int_mem x l
 
-    (* Problem 0: implement various functions on int_trees *)
+(* Implement the functions below. *)
 
 let rec int_size t = failwith "unimplemented"
 
@@ -46,8 +50,9 @@ let rec int_as_list t = failwith "unimplemented"
 
 let rec int_common t x y = failwith "unimplemented"
 
-
-(* Problem 1: Make the tree polymorphic, parameterized by a comparison function *)
+(***************************)
+(* Part 3: Polymorphic BST *)
+(***************************)
 
 type 'a atree =
     Leaf
@@ -57,11 +62,15 @@ type 'a ptree = 'a compfn * 'a atree
 
 let empty_ptree f : 'a ptree = (f,Leaf)
 
+(* Implement the functions below. *)
+
 let pinsert x t = failwith "unimplemented"
 
 let pmem x t = failwith "unimplemented"
 
-(* Part 3: Graphs *)
+(*******************************)
+(* Part 4: Graphs with Records *)
+(*******************************)
 
 type node = int
 type edge = { src : node; dst : node; }
@@ -78,7 +87,7 @@ let add_edge e { nodes = ns; edges = es } =
 
 let add_edges es g = fold (fun g e -> add_edge e g) g es
 
-(* The following are implemented by students *)
+(* Implement the functions below. *)
 
 let graph_empty g = failwith "unimplemented"
 
