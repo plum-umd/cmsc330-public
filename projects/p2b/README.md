@@ -61,10 +61,11 @@ divisible_by 2 [1;3;4;8;0] = [false;false;true;true;true]
 
 #### divisible_by_first lst
 - **Type**: `int list -> bool list`
-- **Description**: Returns a list of booleans where each boolean represents if the corresponding element of the subset of `lst` starting at the second element is divisible by the first element of `lst`. Take note that 0 is divisible by 0.
+- **Description**: Returns a list of booleans where each boolean represents if the corresponding element of `lst` is divisible by the first element of `lst`. Take note that 0 is divisible by 0.
 - **Examples:**
 ```
 divisible_by_first [2;3;4;8;0] = [true;false;true;true;true]
+divisible_by_first [2] = [true]
 divisible_by_first [] = []
 ```
 
