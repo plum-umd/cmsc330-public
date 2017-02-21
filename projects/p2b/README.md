@@ -308,7 +308,7 @@ src_edges 1 (add_edges [{src=1;dst=2}; {src=1;dst=3}; {src=2;dst=2}] empty_graph
 
 #### reachable n g
 - **Type**: `node -> graph -> int_tree`
-- **Description**: Returns the set of nodes reachable from node `n` in graph `g`, where the set is represented as an `int_tree`.
+- **Description**: Returns the set of nodes reachable from node `n` in graph `g`, where the set is represented as an `int_tree`. If `n` is neither a source nor a destination in the graph, `IntLeaf` should be returned.
 - **Examples:**
 ```
 int_as_list
@@ -320,6 +320,11 @@ int_as_list
  (reachable 3
    (add_edges [{src=1;dst=2}; {src=1;dst=3}; {src=2;dst=2}] empty_graph)) =
    [3]
+
+int_as_list
+ (reachable 2
+   (add_edges [{src=0;dst=1}])) =
+   []
 ```
 
 Project Submission
