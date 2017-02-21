@@ -158,7 +158,7 @@ int_max (int_insert_all [1;2;3] empty_int_tree) = 3
 - **Description**: Returns a tree which is the same as tree `t`, but with all the integers in list `lst` added to it. Try to use fold to implement this in one line.
 - **Examples:**
 ```
-int_to_list (int_insert_all [1;2;3] empty_int_tree) = [1;2;3]
+int_as_list (int_insert_all [1;2;3] empty_int_tree) = [1;2;3]
 ```
 
 #### int_as_list t
