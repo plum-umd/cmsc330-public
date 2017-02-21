@@ -96,10 +96,7 @@ let test_int_tree ctxt =
   assert_equal [false;true;true;true;true] @@ map (fun y -> int_mem y t4a) z;
   assert_equal [true;true;true;true;true] @@ map (fun y -> int_mem y t4b) z
 
-(* TODO test int_as_list *)
-
 let test_int_common_1 ctxt =
-  (* TODO where's p2? *)
   let p0 = empty_int_tree in     
   let p1 = (int_insert 2 (int_insert 5 p0)) in
   let p3 = (int_insert 10 (int_insert 3 (int_insert 11 p1))) in
