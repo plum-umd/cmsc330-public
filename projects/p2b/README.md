@@ -323,7 +323,7 @@ int_as_list
 
 int_as_list
  (reachable 2
-   (add_edges [{src=0;dst=1}])) =
+   (add_edges [{src=0;dst=1}] empty_graph)) =
    []
 ```
 
