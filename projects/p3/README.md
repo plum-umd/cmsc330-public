@@ -1,7 +1,6 @@
 # Project 3: SmallC Interpreter and Typechecker
 CMSC 330, Spring 2017
-Due Some Day, Some Year, idk man
-<!-- TODO add real due data -->
+Due March 9th, 2017
 
 Ground Rules and Extra Info
 ---------------------------
@@ -23,7 +22,6 @@ Project Files
 -------------
 To begin this project, you will need to commit any uncommitted changes to your local branch and pull updates from the git repository. [Click here for directions on working with the Git repository.][git instructions] The following are the relevant files:
 
-<!-- TODO add the real files to the document and ensure that they're correct -->
 -  OCaml Files
   - **eval.ml**: All of your code will all be written in the file `eval.ml`. _None of the files other than this one should be changed._
   - **eval.mli**: This is the _interface_ for `eval.ml`. It defines what types and functions are visible to modules outside of `eval.ml` (such as `smallc.ml`, listed below).
