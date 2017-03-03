@@ -49,6 +49,8 @@ If you would like more detailed information about what your code produced, runni
 
 Note that this project doesn't use `ocamlbuild` as p2a and p2b did, and instead relies on a manual compilation chain. As a result, you will need to modify the Makefile if you would like to add your own test files to the compilation chain - this is absolutely allowed, but not necessary. If you need help with this, come talk to us in office hours or post on Piazza. Keep the main logic of your code in `eval.ml` however; this is the only file we will compile during testing (ignoring other files and changes you make to the `Makefile` to support them).
 
+In order to compile against the provided parser and lexer, you must be on OCaml version 4.04.0.
+
 The Evaluator
 -------------
 *The evaluator must be implemented in `eval.ml` in accordance with the signatures for `eval_expr` and `eval_stmt` found in `eval.mli`. `eval.ml` is the only file you will write code in. The functions should be left in the order they are provided, as a good implementation of `eval_stmt` will rely on `eval_expr`.*
