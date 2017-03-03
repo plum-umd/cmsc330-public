@@ -104,7 +104,7 @@ The unary not operator operates only on booleans and produces a `Val_Bool` conta
 
 *These rules are jointly classified as BinOp-Int in the formal semantics*
 
-These relational operators operate only on integers and produce a `Val_Bool` containing the result of the operation. If either of the expressions to perform these operations on evaluates to a non-boolean type, a `TypeError` should be raised.
+These relational operators operate only on integers and produce a `Val_Bool` containing the result of the operation. If either of the expressions to perform these operations on evaluates to a non-integer type, a `TypeError` should be raised.
 
 #### Equal and NotEqual
 
