@@ -1,4 +1,4 @@
-# Project 3: SmallC Interpreter and Typechecker
+# Project 3: SmallC Interpreter
 CMSC 330, Spring 2017
 Due March 9th, 2017
 
@@ -66,7 +66,7 @@ A formal operational semantics of SmallC can be found in [`semantics.pdf`][seman
 - Any expression or statement that is applied to the wrong types should raise a `TypeError` exception when evaluated, for example, the expression `1 + true` would result in `TypeError`.
 - An expression or statement that redefines an already defined variable, assigns to an undefined variable, or reads from an undefined variable should raise a `DeclarationError` when evaluated.
 
-We do not enforce what messages you use when raising the `TypeError` or `DeclarationError` exceptions; that's up to you.
+We do not enforce what messages you use when raising the `TypeError` or `DeclarationError` exceptions; that's up to you. Evaluation of subexpressions should be done from left to right, as specified by the semantics, in order to ensure that lines with multiple possible errors match up with our expected errors.
 
 ### Part 1: eval_expr
 
