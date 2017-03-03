@@ -1,6 +1,6 @@
 # Project 3: SmallC Interpreter
 CMSC 330, Spring 2017
-Due March 9th, 2017
+Due March 10th, 2017
 
 Ground Rules and Extra Info
 ---------------------------
