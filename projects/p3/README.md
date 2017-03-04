@@ -57,7 +57,7 @@ The Evaluator
 
 The heart of SmallC is your evaluator. We have already implemented `Lexer` and `Parser` modules that deal with constructing tokens and creating the AST out of a program. Where your code picks up is with a representation of SmallC programs as OCaml datatypes, which you are then responsible for evaluating according the rules below. A program is made up of a series of statements and expressions:
 
-- Statements represent the structure of a program - declarations, assignments, control flow, and prints in the case of SmallC. - Expressions represent operations on data - variable lookups, mathematical and boolean operations, and comparison. Expressions can't affect the environment, and as a result only return a `value_type` containing the value of the expression.
+- Statements represent the structure of a program - declarations, assignments, control flow, and prints in the case of SmallC. - Expressions represent operations on data - variable lookups, mathematical and boolean operations, and comparison. Expressions can't affect the environment, and as a result only return a `value` containing the value of the expression.
 
 You are responsible for implementing two functions, `eval_expr` and `eval_stmt` in that order. Each of these takes as an argument an `environment` (given in `types.ml`) that is a map from a variable to its current value. Statements may change the values of variables, so `eval_stmt` returns a possibly updated environment.
 
@@ -70,7 +70,7 @@ We do not enforce what messages you use when raising the `TypeError` or `Declara
 
 ### Part 1: eval_expr
 
-`eval_expr` takes an environment `env` and an expression `e` and produces the result of _evaluating_ `e`, which is something of type `value_type` (`Val_Int` or `Val_Bool`).
+`eval_expr` takes an environment `env` and an expression `e` and produces the result of _evaluating_ `e`, which is something of type `value` (`Val_Int` or `Val_Bool`).
 
 #### Int
 
