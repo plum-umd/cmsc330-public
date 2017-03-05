@@ -1,6 +1,6 @@
 # Compilation parameters
 CC = ocamlc
-PROGS = smallc public
+PROGS = smallc public student
 NO_TEST_CMO_DEPENDS = types.cmo parser.cmo lexer.cmo utils.cmo eval.cmo
 FULL_CMO_DEPENDS = $(NO_TEST_CMO_DEPENDS) testUtils.cmo
 
@@ -8,10 +8,13 @@ all: $(PROGS)
 
 clean: 
 	@echo "Cleaning object files and executables"
-	-@rm -f $(PROGS) smallc.cm[oi] public.cm[oi] eval.cm[oi] types.cm[oi] utils.cm[oi] testUtils.cm[oi] oUnit*.log oUnit*.cache
+	-@rm -f $(PROGS) smallc.cm[oi] studentTests.cm[oi] public.cm[oi] eval.cm[oi] types.cm[oi] utils.cm[oi] testUtils.cm[oi] oUnit*.log oUnit*.cache
 
 public: $(FULL_CMO_DEPENDS) public.ml
 	ocamlfind $(CC) -o public -linkpkg -package oUnit -g $(FULL_CMO_DEPENDS) public.ml
+
+student: $(FULL_CMO_DEPENDS) studentTests.ml
+	ocamlfind $(CC) -o student -linkpkg -package oUnit -g $(FULL_CMO_DEPENDS) studentTests.ml
 
 smallc: $(NO_TEST_CMO_DEPENDS) smallc.cmo
 	$(CC) -o smallc $(NO_TEST_CMO_DEPENDS) smallc.cmo
