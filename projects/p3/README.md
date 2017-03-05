@@ -6,7 +6,7 @@ Ground Rules and Extra Info
 ---------------------------
 This is **NOT** a pair project. You must work on this project alone as with most other CS projects. See the Academic Integrity section for more information.
 
-In your code, you may use any non-imperative standard library functions, but the ones that will be useful to you will be found in the [`Pervasives` module][pervasives doc] and the [`List` module][list doc]. Note that the `List` module has been disallowed in previous projects, but in the case of this project and projects going forward it will be allowed.
+In your code, you may use any non-imperative standard library functions (with the exception of printing), but the ones that will be useful to you will be found in the [`Pervasives` module][pervasives doc] and the [`List` module][list doc]. Note that the `List` module has been disallowed in previous projects, but in the case of this project and projects going forward it will be allowed.
 
 You still may not use any imperative structures of OCaml such as references or the `Hashtbl` module.
 
