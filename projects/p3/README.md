@@ -126,7 +126,7 @@ The sequencing statement is used to compose whole programs as a series of statem
 
 #### Declare
 
-The declaration statement is used to create new variables in the environment. If a variable of the same name has already been declared, a `DelcarationError` should be raised. Otherwise, if the type being declared is `Type_Int`, a new binding to the value `Val_Int(0)` should be made in the environment. If the type being declared is `Type_Bool`, a new binding to the value `Val_Bool(false)` should be made in the environment. The updated environment should be returned.
+The declaration statement is used to create new variables in the environment. If a variable of the same name has already been declared, a `DeclarationError` should be raised. Otherwise, if the type being declared is `Type_Int`, a new binding to the value `Val_Int(0)` should be made in the environment. If the type being declared is `Type_Bool`, a new binding to the value `Val_Bool(false)` should be made in the environment. The updated environment should be returned.
 
 #### Assign
 
