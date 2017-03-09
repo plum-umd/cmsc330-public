@@ -66,7 +66,7 @@ Type `nfa_t` is an abstract type representing NFAs. It is up to you to decide th
 Type `transition` is defined as `int * char option * int`. It is a (non-abstract) type to describe an NFA transition. For example:
 ```
 let t1 = (0, Some c, 1) (* Transition from state 0 to state 1 on character 'c' *)
-let t2 = (1, None, 0)   (* Transition frmo state 1 to state 0 on epsilon *)
+let t2 = (1, None, 0)   (* Transition from state 1 to state 0 on epsilon *)
 ```
 
 We also define the function `next` for you, which provides a unique int at every call.
@@ -104,7 +104,7 @@ e_closure m [1] = [1;2]
 e_closure m [2]  = [2]
 e_closure m [0;1] = [0;1;2] 
 ```
-  * **Explanation:**
+* **Explanation:**
   1. e_closure on `m` from `0` returns `[0]` since there is no where to go from `0` on an epsilon transition.
   2. e_closure on `m` from `1` returns `[1;2]` since from `1` you can get to `2` on an epsilon transition.
   3. e_closure on `m` from `2` returns `[0]` since there is no where to go from `2` on an epsilon transition.
