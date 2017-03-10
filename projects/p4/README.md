@@ -107,7 +107,7 @@ e_closure m [0;1] = [0;1;2]
 * **Explanation:**
   1. e_closure on `m` from `0` returns `[0]` since there is no where to go from `0` on an epsilon transition.
   2. e_closure on `m` from `1` returns `[1;2]` since from `1` you can get to `2` on an epsilon transition.
-  3. e_closure on `m` from `2` returns `[0]` since there is no where to go from `2` on an epsilon transition.
+  3. e_closure on `m` from `2` returns `[2]` since there is no where to go from `2` on an epsilon transition.
   4. e_closure on `m` from `0` and `1` returns `[0;1;2]` since from `0` you can only get to yourself and from `1` you can get to `2` on an epsilon transition but from `2` you can't go anywhere.
 
 **move m l c**
