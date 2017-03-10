@@ -1,0 +1,27 @@
+1. Which of the following strings is accepted by NFA p1?
+    - d
+    - ababd
+    - cccabd
+    - cd
+    - cccccd
+
+
+2. How many states exist in the DFA created from fa1?
+    - 2
+    - 3
+    - 4
+    - 5
+
+
+3. What is the language accepted by p2?
+
+Answer:
+
+
+4. Create an NFA that accepts the language (a|b*c)*(da)*
+
+
+5. Create an NFA that accepts strings containing any number of 'a's and an odd number of 'b's
+
+
+6. Convert your answer for 5 into a DFA
