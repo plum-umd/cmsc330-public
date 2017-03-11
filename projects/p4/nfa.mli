@@ -7,6 +7,8 @@ type nfa_t
 type transition = int * char option * int
 type stats = {num_states : int; num_finals : int; outgoing_counts : (int * int) list}
 
+val next : unit -> int
+
 (* These are the signatures of functions you must implement *)
 val make_nfa : int -> int list -> transition list -> nfa_t
 val e_closure : nfa_t -> int list -> int list
