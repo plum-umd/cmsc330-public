@@ -15,12 +15,14 @@ let assert_nfa_accept nfa input = if not @@ Nfa.accept nfa input then assert_fai
 let assert_nfa_deny nfa input = if Nfa.accept nfa input then assert_failure @@ Printf.sprintf "NFA should not have accepted string '%s', but did" input
 
 let assert_nfa_closure nfa ss es =
-  let rcv = Nfa.e_closure nfa ss in
+  let es = List.sort compare es in
+  let rcv = List.sort compare @@ Nfa.e_closure nfa ss in
   if not (es = rcv) then
     assert_failure @@ Printf.sprintf "Closure failure: Expected %s, received %s" (string_of_int_list es) (string_of_int_list rcv)
 
 let assert_nfa_move nfa ss mc es =
-  let rcv = Nfa.move nfa ss mc in
+  let es = List.sort compare es in
+  let rcv = List.sort compare @@ Nfa.move nfa ss mc in
   if not (es = rcv) then
     assert_failure @@ Printf.sprintf "Move failure: Expected %s, received %s" (string_of_int_list es) (string_of_int_list rcv)
 
