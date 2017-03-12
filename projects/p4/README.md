@@ -198,7 +198,7 @@ regexp_to_string (Union (Char 'a', Char 'b')) = "a|b"
 regexp_to_string (Concat(Char 'a',Char 'b')) = "ab"
 regexp_to_string (Concat(Char 'a',Concat(Char 'a',Char 'b'))) = "aab"
 regexp_to_string (Star(Union(Char 'a',Empty_String))) = "(a|E)*" (* Note that 'E' represents epsilon! *)
-regexp_to_string (Concat(Star(Union(Char 'a',Empty_String)),Union(Char 'a',Char 'b'))) = "(a|e)*(a|b)"
+regexp_to_string (Concat(Star(Union(Char 'a',Empty_String)),Union(Char 'a',Char 'b'))) = "(a|E)*(a|b)"
 ```
 * **Hint:** You can do this as an in-order DFS traversal over the regexp data structure.
 <!-- TODO is this too big a hint? -->
