@@ -228,7 +228,7 @@ Precedence | Operator | Description
 ---------- | -------- | -----------
 1 | () | parentheses
 2 | * | closure
-3 | . | concatenation
+3 | | concatenation
 4 | &#124; | union
 
 Also, note that all the binary operators are **right associative**. 
