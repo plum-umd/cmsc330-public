@@ -1,6 +1,6 @@
 OCAMLBUILD = ocamlbuild
 
-SOURCES = nfa.mli nfa.ml testUtils.ml
+SOURCES = nfa.mli nfa.ml regexp.ml regexp.mli testUtils.ml
 PUBLIC_SOURCES = public.ml
 
 PUBLIC_RESULT = public.byte
