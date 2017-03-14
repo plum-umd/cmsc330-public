@@ -241,10 +241,10 @@ Be sure to follow the project description exactly! Your solution will be graded 
 
 You can submit your project in two ways:
 
-* Submit both your `nfa.ml` and `regexp.ml` files directly to the [submit server][https://submit.cs.umd.edu/spring2017/view/index.jsp] by uploading both your files in two seperate steps. Select your files using the "Browse" button, then press the "Submit project!" button. You do not need to put it in a zip file.
+* Submit both your `nfa.ml` and `regexp.ml` files directly to the [submit server](https://submit.cs.umd.edu/spring2017/view/index.jsp) by uploading both your files in two seperate steps. Select your files using the "Browse" button, then press the "Submit project!" button. You do not need to put it in a zip file.
 
 * Submit directly by executing a the submission script on a computer with Java and network access. Included in this project are the submission scripts and related files listed under Project Files. These files should be in the directory containing your project. From there you can either execute `ruby submit.rb` or run the command `java -jar submit.jar` directly (this is all submit.rb does).
-No matter how you choose to submit your project, make sure that your submission is received by checking the [submit server][https://submit.cs.umd.edu/spring2017/view/index.jsp] after submitting.
+No matter how you choose to submit your project, make sure that your submission is received by checking the [submit server](https://submit.cs.umd.edu/spring2017/view/index.jsp) after submitting.
 
 Academic Integrity
 ------------------
