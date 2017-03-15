@@ -154,8 +154,8 @@ accept n "abac" = true
   * `outgoing_counts` is an associative list mapping number of outgoing edges to the number of states with that number of outgoing edges. The list must be sorted by the the number of outgoing transitions.
 * **Examples** (where `m` and `n` are nfas defined above):
 ```
-stats m = (3, 1, [(0,1);(1,2)]) 
-stats n = (3, 1, [(0,1);(1,1);(2,1)]) 
+stats m = {num_states = 3; num_finals = 1; outgoing_counts = [(0, 1); (1, 2)]}
+stats n = {num_states = 3; num_finals = 1; outgoing_counts = [(0, 1); (1, 1); (2, 1)]}
 ```
 * **Explanation**: 
   1. Here `m` has a total of 3 states and 1 final state. The list is read as follows, `m` has 1 state with 0 outgoing edges and 2 states with 1 outgoing edge. Remember that the tuple is of the following format (n edges , x states).
