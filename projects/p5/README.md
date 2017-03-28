@@ -256,9 +256,9 @@ You should submit the files `lexer.ml` and `parser.ml` containing your solution.
 Be sure to follow the project description exactly! Your solution will be graded automatically, so any deviation from the specification will result in lost points.
 
 You can submit your project in two ways:
-- Submit your files directly to the [submit server][submit server] as a zip file by clicking on the submit link in the column "web submission".
+- Submit your files directly to the [submit server][submit server] as a zip file by clicking on the submit link in the column "web submission".  
 ![Where to find the web submission link][web submit link]  
-Then, use the submit dialog to submit your zip file containing `eval.ml` directly.
+Then, use the submit dialog to submit your zip file containing `eval.ml` directly.  
 ![Where to upload the file][web upload example]  
 Select your file using the "Browse" button, then press the "Submit project!" button. You will need to put it in a zip file since there are two component files.
 - Submit directly by executing a the submission script on a computer with Java and network access. Included in this project are the submission scripts and related files listed under **Project Files**. These files should be in the directory containing your project. From there you can either execute submit.rb or run the command `java -jar submit.jar` directly (this is all submit.rb does).
