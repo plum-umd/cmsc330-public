@@ -79,8 +79,8 @@ Token Name (in OCaml) | Lexical Representation (in grammars below)
 --- | ---
 `Tok_LParen` | `(`
 `Tok_RParen` | `)`
-`Tok_LBrace` | `[`
-`Tok_RBrace` | `]`
+`Tok_LBrace` | `{`
+`Tok_RBrace` | `}`
 `Tok_Equal` | `==`
 `Tok_NotEqual` | `!=`
 `Tok_Assign` | `=`
