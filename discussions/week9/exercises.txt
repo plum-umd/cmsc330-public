@@ -1,10 +1,10 @@
 Parsing
 
-S -> S + S | E
-E -> E * E | L
+S -> S + E | E
+E -> E * L | L
 L -> a | b
 
-1. Provide a left-most derivation for the string "a * a + b * a + a"
+1. Provide a left-most derivation for the string "a * a + b"
 
 
 
