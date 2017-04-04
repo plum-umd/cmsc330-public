@@ -32,7 +32,7 @@ C -> f | d | epsilon
 
 FirstSet(S) = {a, f, d, g}
 FirstSet(A) = {d}
-FirstSet(B) = {a, d, g}
+FirstSet(B) = {f, d, g}
 FirstSet(C) = {f, d, epsilon}
 
 Lambda Calculus

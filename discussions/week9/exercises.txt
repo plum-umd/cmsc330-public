@@ -16,7 +16,7 @@ L -> a | b
 
 
 
-4. Change the grammar from (4) so that + has higher precedence than *
+4. Change the grammar from (3) so that + has higher precedence than *
 
 
 
