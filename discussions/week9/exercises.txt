@@ -1,0 +1,51 @@
+Parsing
+
+S -> S + E | E
+E -> E * L | L
+L -> a | b
+
+1. Provide a left-most derivation for the string "a * a + b"
+
+
+
+2. Provide the parse tree for the above derivation
+
+
+
+3. Change the grammar to make it left associative (left recursive)
+
+
+
+4. Change the grammar from (3) so that + has higher precedence than *
+
+
+
+5. Provide the first sets for each of the production rules in the following grammar:
+
+S -> aAB | Bc
+A -> dB | Ac
+B -> Cg
+C -> f | d | epsilon
+
+
+Lambda Calculus
+
+1. Make all parantheses explicit in the following lambda expression
+    λx.xy λx.yx
+
+
+2. Apply beta-reduction and (if necessary) alpha conversion to reduce the following expressions as much as possible
+
+    a. (λz.z) (λy.y y) (λx.x a)
+
+
+
+    b. (((λx.λy(x y)) (λy.y)) w)
+
+
+
+    c. (λx.y) ((λy.y y y) (λx.x x x))
+
+
+
+    d. (λx.y) ((λy.y y y) (λx.x x x)) (reduce differently than c)
