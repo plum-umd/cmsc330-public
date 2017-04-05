@@ -102,6 +102,7 @@ Token Name (in OCaml) | Lexical Representation (in grammars below)
 `Tok_Plus` | `+`
 `Tok_Sub` | `-`
 `Tok_Mult` | `*`
+`Tok_Div` | `/`
 `Tok_Pow` | `^`
 
 Your lexing code will feed the tokens into your parser, so a broken lexer will render the parser useless. Test your lexer thoroughly before moving on to the parser!
