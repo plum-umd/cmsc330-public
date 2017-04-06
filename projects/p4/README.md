@@ -21,7 +21,7 @@ To begin this project, you will need to commit any uncommitted changes to your l
 * OCaml Files
   * __nfa.ml__ and __nfa.mli__: This is where you will write your code for the first part of the project, the NFA implementation.
     * Note that you will not change `nfa.mli`!
-  * __regexp.ml__ and __regexp.mli__: This is where you will write your code for the second part of the project, the regular expressions interpreter. It also contains an implementation of a parser where you can use some of the funtions such as `string_to_regexp` and `string_to_nfa` for creating your own test cases.
+  * __regexp.ml__ and __regexp.mli__: This is where you will write your code for the second part of the project, the regular expressions interpreter. It also contains an implementation of a parser where you can use some of the functions such as `string_to_regexp` and `string_to_nfa` for creating your own test cases.
     * Note that you will not change `regexp.mli`!
   * __public.ml__: This file contains all of the public test cases.
   * __visualize.ml__: This script can be used to display regex NFAs. This is a very useful debugging tool! Described more below.
@@ -86,7 +86,7 @@ You must now implement the following functions as specified. Functions listed la
 **make_nfa ss fs ts**
 
 * **Type:** `int -> int list -> transition list -> nfa_t`
-* **Description:** This function takes as input the starting state, a list of final states, and a list of transitions, returing an NFA. Again, it is up to you to decide exactly how NFAs should be implemented, but you probably do not need to do much more than simply track these three components (the starting state, final states, and transition list).
+* **Description:** This function takes as input the starting state, a list of final states, and a list of transitions, returning an NFA. Again, it is up to you to decide exactly how NFAs should be implemented, but you probably do not need to do much more than simply track these three components (the starting state, final states, and transition list).
 * **Examples:**
 ```
 let m = make_nfa 0 [2] [(0, Some 'a', 1); (1, None, 2)] (* returns value of type nfa_t *)
@@ -160,7 +160,7 @@ stats n = {num_states = 3; num_finals = 1; outgoing_counts = [(0, 1); (1, 1); (2
 * **Explanation**: 
   1. Here `m` has a total of 3 states and 1 final state. The list is read as follows, `m` has 1 state with 0 outgoing edges and 2 states with 1 outgoing edge. Remember that the tuple is of the following format (n edges , x states).
   2. Here `n` has a total of 3 states and 1 final state and 1 state with 0 outgoing edges and 1 state with 1 outgoing edge and 1 state with 2 outgoing edges.
-  3. Notice that the list should contain values that are greater than 0, if there are no states that have 3 outgoing transitions, do not to put (3,0) in the list, we will assume that if it's not in the list that the count is 0. stats counts only outgoing egdes
+  3. Notice that the list should contain values that are greater than 0, if there are no states that have 3 outgoing transitions, do not to put (3,0) in the list, we will assume that if it's not in the list that the count is 0. stats counts only outgoing edges.
 
 Part 2: Regular Expressions
 ---------------------------
@@ -177,7 +177,7 @@ Here regexp_t is a user-defined OCaml variant datatype representing regular expr
 * `Empty_String` represents the regular expression recognizing the empty string (not the empty set!). Written as a formal regular expression, this would be `epsilon`.
 * `Char c` represents the regular expression that accepts the single character c. Written as a formal regular expression, this would be `c`.
 * `Union (r1, r2)` represents the regular expression that is the union of r1 and r2. For example, `Union(Char 'a', Char'b')` is the same as the formal regular expression `a|b`.
-* `Concat (r1, r2)` represents the concatenation of r1 followed by r2. For example, `Concat(Char 'a', Char 'b')` is the same as the formal regular expresion `ab`.
+* `Concat (r1, r2)` represents the concatenation of r1 followed by r2. For example, `Concat(Char 'a', Char 'b')` is the same as the formal regular expression `ab`.
 * `Star r` represents the Kleene closure of regular expression r. For example, `Star (Union (Char 'a', Char 'b'))` is the same as the formal regular expression `(a|b)*`.
 
 Now you must implement your own function to convert a regular expression (in the above format) to an NFA, which you can then use to match particular strings (by leveraging your `Nfa` module). You must also implement a function that turns `regexp_t` structures back into a string representation.
@@ -241,7 +241,7 @@ Be sure to follow the project description exactly! Your solution will be graded 
 
 You can submit your project in two ways:
 
-* Submit both your `nfa.ml` and `regexp.ml` files directly to the [submit server](https://submit.cs.umd.edu/spring2017/view/index.jsp) by uploading both your files in two seperate steps. Select your files using the "Browse" button, then press the "Submit project!" button. You do not need to put it in a zip file.
+* Submit both your `nfa.ml` and `regexp.ml` files directly to the [submit server](https://submit.cs.umd.edu/spring2017/view/index.jsp) by uploading both your files in two separate steps. Select your files using the "Browse" button, then press the "Submit project!" button. You do not need to put it in a zip file.
 
 * Submit directly by executing a the submission script on a computer with Java and network access. Included in this project are the submission scripts and related files listed under Project Files. These files should be in the directory containing your project. From there you can either execute `ruby submit.rb` or run the command `java -jar submit.jar` directly (this is all submit.rb does).
 No matter how you choose to submit your project, make sure that your submission is received by checking the [submit server](https://submit.cs.umd.edu/spring2017/view/index.jsp) after submitting.

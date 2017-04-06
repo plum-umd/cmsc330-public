@@ -1,0 +1,66 @@
+Parsing
+
+S -> S + S | E
+E -> E * E | a | b
+
+1. Provide a left-most derivation for the string "a * a + b"
+
+S -> S + S -> E + S -> E * E + S -> a * E + S -> a * a + S -> a * a + S -> a * a + E -> a * a + b
+
+2. Provide the parse tree for the above derivation
+
+I really don't know how to represent this in a text document so this is left as an exercise to the reader
+
+3. Change the grammar to make + and * left associative (left recursive)
+
+S -> S + E | E
+E -> E * L | L
+L -> a | b
+
+4. Change the grammar from (3) so that + has higher precedence than *
+
+S -> S * E | E
+E -> E + L | L
+L -> a | b
+
+5. Provide the first sets for each of the production rules in the following grammar:
+
+S -> aAB | Bc
+A -> dB | Ac
+B -> Cg
+C -> f | d | epsilon
+
+FirstSet(S) = {a, f, d, g}
+FirstSet(A) = {d}
+FirstSet(B) = {f, d, g}
+FirstSet(C) = {f, d, epsilon}
+
+Lambda Calculus
+
+1. Make all parantheses explicit in the following lambda expression
+    λx.xy λx.yx
+
+    (λx.((x y) (λx.(y x))))
+
+2. Apply beta-reduction and (if necessary) alpha conversion to reduce the following expressions as much as possible
+
+    a. (λz.z) (λy.y y) (λx.x a)
+
+        (λz.z) (λy.y y) (λx.x a)
+        (λy.y y) (λx.x a)
+        (λx.x a) (λx.x a)
+        (λx.x a) a
+        a a
+
+    b. (((λx.λy(x y)) (λy.y)) w)
+
+        (((λx.λy.(x y)) (λy.y)) w)
+        (((λx.λa.(x a)) (λy.y)) w)
+        ((λa.((λy.y) a)) w)
+        (λy.y) w
+        w
+
+    c. (λx.y) ((λy.y y y) (λx.x x x))
+
+        (λx.y) ((λy.y y y) (λx.x x x))
+        y (since there is no x in the first body, you can just discard the argument)
