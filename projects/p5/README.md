@@ -57,6 +57,7 @@ Your lexer must meet these general requirements:
 - Lexer input should be terminated by the `EOF` token, meaning that the shortest possible output from the lexer is `[EOF]`.
 - If the beginning of a string could be multiple things, the longest match should be preferred, for example:
   - "while0" should not be lexed as `Tok_While`, but as `Tok_ID("while0")`, since it is an identifier
+  - "1-1" should be lexed as `[Tok_Int(1); Tok_Int(-1)]` since "-1" is a longer match than just "-".
 
 Most tokens only exist in one form (for example, the only way for `Tok_Pow` to appear in the program is as `^` and the only way for `Tok_While` to appear in the program is as `while`). However, a few tokens have more complex rules. The regular expressions for these more complex rules are provided here:
 
