@@ -88,7 +88,7 @@ Token Name (in OCaml) | Lexical Representation (in grammars below)
 `Tok_Less` | `<`
 `Tok_GreaterEqual` | `>=`
 `Tok_LessEqual` | `<=`
-`Tok_Or` | `||`
+`Tok_Or` | <code>&#124;&#124;</code>
 `Tok_And` | `&&`
 `Tok_Not` | `!`
 `Tok_Semi` | `;`
