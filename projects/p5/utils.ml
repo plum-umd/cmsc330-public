@@ -85,7 +85,7 @@ let string_of_list ?newline:(newline=false) (f : 'a -> string) (l : 'a list) : s
 let string_of_in_channel (ic : in_channel) : string =
   let lines : string list =
     let try_read () =
-      try Some (input_line ic) with End_of_file -> None in
+      try Some ((input_line ic) ^ "\n") with End_of_file -> None in
     let rec loop acc = match try_read () with
       | Some s -> loop (s :: acc)
       | None -> List.rev acc in
