@@ -1,3 +1,6 @@
+# Project 6: Prolog
+CMSC 330, Spring 2017 (Due April 25th, 2017)
+
 Introduction
 ------------
 Welcome to Prolog! This project contains five sections: arithmetic, lists, binary trees, operational semantics and finite automata. Each section begins with familiar expercises, mostly drawn from previous projects, so that solutions can be adapted and compared between OCaml and Prolog. The exercises in each section are arranged in roughly increasing difficulty. Tests are independent between sections, so you can skip between them without worrying about dependencies.
@@ -47,7 +50,7 @@ Factors = [1, 2, 4, 17, 34, 68].
 
 ```
 ?- gcd(8,0,D).
-D = 5.
+D = 8.
 
 ?- gcd(8,9,D).
 D = 1.
@@ -178,11 +181,8 @@ Comb = [].
 ?- setof(Sub,powerset([1],Sub),Subs).
 Subs = [[], [1]].
 
-?- setof(Sub,combination([1],Sub),Subs).
-Combs = [[], [1]].
-
-?- setof(Sub,combination([1,2],Sub),Subs).
-Combs = [[], [1], [1, 2], [2]].
+?- setof(Sub,powerset([1,2],Sub),Subs).
+Subs = [[], [1], [1, 2], [2]].
 ```
 
 Part 3: Operational Semantics (opsem.pl)
@@ -379,7 +379,7 @@ New = node(1, leaf, node(5, node(3, leaf, leaf), leaf)).
 ```
 
 - **Predicate:** `inorder(Bst,Elems)`
-- **Description:` `Elems` is an inorder traversal of `Bst`.
+- **Description:** `Elems` is an inorder traversal of `Bst`.
 - **Usage:** If `Bst` is a binary search tree, then `inorder(Bst,Elems)` succeeds with one solution for `Elems`
 
 ```
@@ -430,16 +430,16 @@ Inorder = [1, 3, 4, 6].
 - **Hints:** What happens when you run `inorder/2` with `Bst` uninstantiated? Why does this happen?
 
 ```
-?- findall(Bst,enumerate_bst([],Bst),Enum).
+?- setof(Bst,enumerate_bst([],Bst),Enum).
 Enum = [leaf].
 
-?- findall(Bst,enumerate_bst([1,2],Bst),Enum).
+?- setof(Bst,enumerate_bst([1,2],Bst),Enum).
 Enum = [
     node(1, leaf, node(2, leaf, leaf)),
     node(2, node(1, leaf, leaf), leaf)
 ].
 
-?- findall(Bst,enumerate_bst([1,2,3],Bst),Enum).
+?- setof(Bst,enumerate_bst([1,2,3],Bst),Enum).
 Enum = [
     node(1, leaf, node(2, leaf, node(3, leaf, leaf))),
     node(1, leaf, node(3, node(2, leaf, leaf), leaf)),
