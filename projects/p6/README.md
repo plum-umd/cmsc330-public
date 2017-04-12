@@ -5,6 +5,8 @@ Introduction
 ------------
 Welcome to Prolog! This project contains five sections: arithmetic, lists, binary trees, operational semantics and finite automata. Each section begins with familiar expercises, mostly drawn from previous projects, so that solutions can be adapted and compared between OCaml and Prolog. The exercises in each section are arranged in roughly increasing difficulty. Tests are independent between sections, so you can skip between them without worrying about dependencies.
 
+This is a pair project - you may work with one other person, but make sure you both make your own submissions, as you will still be graded independently.
+
 Organization
 ------------
 This project is organized into five [modules](http://www.swi-prolog.org/pldoc/man?section=modules), which are collections of predicated satisfying an interface. The [`module/2`](http://www.swi-prolog.org/pldoc/man?section=defmodule) directive occurring at the beginning of each source file declares the module name and interface. For example, the file `arith.pl` defines a module named `arith` that exports the predicates `gcd/3`, `factor/2`, `prime/1` and `partition/1`. The [use_module/1](http://www.swi-prolog.org/pldoc/man?section=import) directive imports all predicates defined by a module, making them available in the current module or toplevel session.
