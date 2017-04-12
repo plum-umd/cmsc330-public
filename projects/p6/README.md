@@ -1,5 +1,5 @@
 # Project 6: Prolog
-CMSC 330, Spring 2017 (Due April 25th, 2017)
+CMSC 330, Spring 2017 (Due May 1st, 2017)
 
 Introduction
 ------------
