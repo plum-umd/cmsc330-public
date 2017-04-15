@@ -1,21 +1,44 @@
 # Project 6: Prolog
 CMSC 330, Spring 2017 (Due May 1st, 2017)
 
-Introduction
-------------
-Welcome to Prolog! This project contains five sections: arithmetic, lists, binary trees, operational semantics and finite automata. Each section begins with familiar expercises, mostly drawn from previous projects, so that solutions can be adapted and compared between OCaml and Prolog. The exercises in each section are arranged in roughly increasing difficulty. Tests are independent between sections, so you can skip between them without worrying about dependencies.
-
-This is a pair project - you may work with one other person, but make sure you both make your own submissions, as you will still be graded independently.
-
-Organization
-------------
-This project is organized into five [modules](http://www.swi-prolog.org/pldoc/man?section=modules), which are collections of predicated satisfying an interface. The [`module/2`](http://www.swi-prolog.org/pldoc/man?section=defmodule) directive occurring at the beginning of each source file declares the module name and interface. For example, the file `arith.pl` defines a module named `arith` that exports the predicates `gcd/3`, `factor/2`, `prime/1` and `partition/1`. The [use_module/1](http://www.swi-prolog.org/pldoc/man?section=import) directive imports all predicates defined by a module, making them available in the current module or toplevel session.
-
 Ground Rules
 ------------
+This **is** a pair project. You may work with one other person, but make sure you both make your own submissions, as you will still be graded independently.
+
 1. You can use any built-in [arithmetic](http://www.swi-prolog.org/pldoc/man?section=arith) or [list](http://www.swi-prolog.org/pldoc/man?section=builtinlist) predicate, in addition to any predicate defined [`library(lists)`](http://www.swi-prolog.org/pldoc/man?section=lists). Do not use additional libraries or syntactic extensions (unless given permission by an instructor, which is unlikely).
 
 2. If asked to generate multiple solutions, the order and uniqueness of solutions is irrelevant unless specified otherwise. If a predicate should succeed deterministically, you are not required to prune redundant choice points provided that no _distinct_ solutions are generated on backtracking. Your code is tested by inspecting sets of solutions using extra-logical predicates.
+
+Introduction
+------------
+Welcome to Prolog! This project contains five sections: arithmetic, lists, binary trees, operational semantics and finite automata. Each section begins with familiar exercises, mostly drawn from previous projects, so that solutions can be adapted and compared between OCaml and Prolog. The exercises in each section are arranged in roughly increasing difficulty. Tests are independent between sections, so you can skip between them without worrying about dependencies.
+
+This project is organized into five [modules](http://www.swi-prolog.org/pldoc/man?section=modules), which are collections of predicated satisfying an interface. The [`module/2`](http://www.swi-prolog.org/pldoc/man?section=defmodule) directive occurring at the beginning of each source file declares the module name and interface. For example, the file `arith.pl` defines a module named `arith` that exports the predicates `gcd/3`, `factor/2`, `prime/1` and `partition/1`. The [use_module/1](http://www.swi-prolog.org/pldoc/man?section=import) directive imports all predicates defined by a module, making them available in the current module or toplevel session.
+
+Project Files
+------------
+To begin this project, you will need to commit any uncommitted changes to your local branch and pull updates from the git repository. [Click here for directions on working with the Git repository.][git instructions] The following are the relevant files:
+
+- Prolog files (you should edit)
+  - **arith.pl**: This file is the place you will implement part 1, the arithmetic module.
+  - **list.pl**:  This file is the place you will implement part 2, the list module.
+  - **opsem.pl**:  This file is the place you will implement part 3, the operational semantics module.
+  - **nfa.pl**:  This file is the place you will implement part 4, the finite automata module.
+  - **binary.pl**:  This file is the place you **may** implement part 5, the binary search tree module. This section is **extra credit**.
+- Provided Prolog files (no need to edit, changes will be overwritten!)
+  - **lexer.pl**: This file implements the SmallC lexer.
+  - **parser.pl**: This file implements the SmallC parser.
+  - **public.pl**: The public test driver file.
+- Submission Scripts and Other Files
+  - **submit.rb**: Execute this script to submit your project to the submit server.
+  - **submit.jar** and **.submit**: Don't worry about these files, but make sure you have them.
+  - **pack_submission.sh**: Execute this script to zip your project for web submission.
+
+Tests and Running
+-------------------------------
+The public tests can be run by executing `swipl -f public.pl -t run_tests`.
+
+You can test any module from the Prolog toplevel. Run `swipl` and load any of your modules. For example, to load the arithmetic module execute `[arith].`. Assuming no errors, you will now be able to use any of your predicates.
 
 General Advice
 --------------
@@ -193,7 +216,7 @@ In this section, you will implement an interpreter for a fragment of SmallC. The
 
 We have provided a parser, type checker and driver to make testing your interpreter easier. The parser and type checker perform no error reporting, so determining the cause of failure may be difficult. The expressions and statements your interpreter should support are precisely those for which parsing and type checking have been implemented. Thus, your first task is to read and understand the type checker. Environments are represented as association lists. The elements of an association list are pairs of the form `K-V`, where `K` is the key and `V` the value. By convention, we say that `K` is bound to `V` in an environment `Env` if `V` is the leftmost binding for `K` in `Env`. The predicate `lookup/3` defined in `opsem.pl` returns the leftmost binding for a key in an association list.
 
-The predicates `interpret_expr/6` and `interpret_stmt/4` can be used to test your implementation. You are referred to the documentation in `opsem.pl` for their full specification. To use `interpret_expr/5` and `interpret_stmt/4`, you must provide a string representation of an expression, a typing environment, and intial values for all free variables in the expression or statement. The string must be syntactically correct, the expression or statement well-typed in the typing environment, and the initial values consistent with the typing environment. Your interpreter operates under these assumptions, so no error checking is required.
+The predicates `interpret_expr/6` and `interpret_stmt/4` can be used to test your implementation. You are referred to the documentation in `opsem.pl` for their full specification. To use `interpret_expr/5` and `interpret_stmt/4`, you must provide a string representation of an expression, a typing environment, and initial values for all free variables in the expression or statement. The string must be syntactically correct, the expression or statement well-typed in the typing environment, and the initial values consistent with the typing environment. Your interpreter operates under these assumptions, so no error checking is required.
 
 - **Predicate:** `eval_expr(Env,Expr,Value)`
 - **Description:** `Expr` evaluates to value `Value` in environment `Env`.
@@ -460,7 +483,7 @@ You can submit your project in two ways:
 ![Where to find the web submission link][web submit link]  
 Then, use the submit dialog to submit your zip file containing all of your source files directly.
 ![Where to upload the file][web upload example]  
-Select your file using the "Browse" button, then press the "Submit project!" button. You will need to put it in a zip file since there are two component files. We provide a script `pack_submission.sh` which you can run to make a zip file containing all of the necessary files.
+Select your file using the "Browse" button, then press the "Submit project!" button. You will need to put it in a zip file since there are several component files. We provide a script `pack_submission.sh` which you can run to make a zip file containing all of the necessary files.
 - Submit directly by executing a the submission script on a computer with Java and network access. Included in this project are the submission scripts and related files listed under **Project Files**. These files should be in the directory containing your project. From there you can either execute submit.rb or run the command `java -jar submit.jar` directly (this is all submit.rb does).
 
 No matter how you choose to submit your project, make sure that your submission is received by checking the [submit server][submit server] after submitting.
@@ -469,6 +492,7 @@ Academic Integrity
 ------------------
 Please **carefully read** the academic honesty section of the course syllabus. **Any evidence** of impermissible cooperation on projects, use of disallowed materials or resources, or unauthorized use of computer accounts, **will be** submitted to the Student Honor Council, which could result in an XF for the course, or suspension or expulsion from the University. Be sure you understand what you are and what you are not permitted to do in regards to academic integrity when it comes to project assignments. These policies apply to all students, and the Student Honor Council does not consider lack of knowledge of the policies to be a defense for violating them. Full information is found in the course syllabus, which you should review before starting.
 
+[git instructions]: ../git_cheatsheet.md
 [submit server]: submit.cs.umd.edu
 [web submit link]: ../common-images/web_submit.jpg
 [web upload example]: ../common-images/web_upload.jpg
