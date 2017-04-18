@@ -172,13 +172,13 @@ Pairs = [(1, 0),  (2, 1),  (1, 2),  (2, 3)].
 - **Usage:** If `NestedList` is a list, then `flat(NestedList,FlatList)` succeeds with one solution for `FlatList`.
 
 ```
-?- flatten([],FlatList).
+?- flat([],FlatList).
 FlatList = [].
 
-?- flatten([1,[3]],FlatList).
+?- flat([1,[3]],FlatList).
 FlatList = [1, 3].
 
-?- flatten([1,[[2],3],[4,[]],FlatList).
+?- flat([1,[[2],3],[4,[]],FlatList).
 FlatList = [1, [2], 3, 4, []].
 ```
 
