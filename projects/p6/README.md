@@ -9,6 +9,12 @@ This **is** a pair project. You may work with one other person, but make sure yo
 
 2. If asked to generate multiple solutions, the order and uniqueness of solutions is irrelevant unless specified otherwise. If a predicate should succeed deterministically, you are not required to prune redundant choice points provided that no _distinct_ solutions are generated on backtracking. Your code is tested by inspecting sets of solutions using extra-logical predicates.
 
+3. The extra credit will be graded as follows:
+  - For each of the extra credit portions, a minimum of 50% of available points must be earned to earn ANY credit for that portion
+  - If the 50% threshold is met, credit will be awarded as normal (i.e. [points received / points possible])
+  - The extra credit will be weighted as 3% of your final course grade
+    - Completing this extra credit will give you as many extra points as project 2a was worth towards your grade! This is *real* extra credit!
+
 Introduction
 ------------
 Welcome to Prolog! This project contains five sections: arithmetic, lists, binary trees, operational semantics and finite automata. Each section begins with familiar exercises, mostly drawn from previous projects, so that solutions can be adapted and compared between OCaml and Prolog. The exercises in each section are arranged in roughly increasing difficulty. Tests are independent between sections, so you can skip between them without worrying about dependencies.
@@ -340,7 +346,7 @@ Strings = [[a, a, a], [a, b, a], [b, a, a], [b, b, a]].
 
 Extra Credit: Binary Search Trees (binary.pl)
 ---------------------------------------------
-For extra credit, implement a binary search tree in Prolog. The set of binary search trees is defined inductively as follows: `leaf` is a binary search tree; and `node(X,L,R)` is a binary search tree with key `X` whenever `X` is a positive integer, `L` is a binary search tree with `Y < X` for every key `Y` in `L`, and `R` is a binary search tree with `Y > X` for every key `Y` in `R`. Note that binary search trees have unique keys according to this definition. Your implementation of binary search trees should resemble your implementation from [Project 2(b)](https://github.com/plum-umd/cmsc330/tree/p3dev/projects/p2b#part-2-integer-bst).
+For extra credit, implement a binary search tree in Prolog. The set of binary search trees is defined inductively as follows: `leaf` is a binary search tree; and `node(X,L,R)` is a binary search tree with key `X` whenever `X` is a positive integer, `L` is a binary search tree with `Y < X` for every key `Y` in `L`, and `R` is a binary search tree with `Y > X` for every key `Y` in `R`. Note that binary search trees have unique keys according to this definition. Your implementation of binary search trees should resemble your implementation from [Project 2(b)](../projects/p2b#part-2-integer-bst).
 
 - **Predicate:** `card(Bst,Card)`
 - **Description:** `Card` is the number of elements in `Bst`
