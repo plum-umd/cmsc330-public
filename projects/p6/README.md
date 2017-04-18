@@ -178,7 +178,7 @@ FlatList = [].
 ?- flat([1,[3]],FlatList).
 FlatList = [1, 3].
 
-?- flat([1,[[2],3],[4,[]],FlatList).
+?- flat([1,[[2],3],[4,[]]],FlatList).
 FlatList = [1, [2], 3, 4, []].
 ```
 
