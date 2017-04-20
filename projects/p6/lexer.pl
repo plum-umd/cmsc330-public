@@ -31,7 +31,7 @@ token(not)       --> "!".
 token(lt)        --> "<".
 token(assign)    --> "=", \+ "=".
 
-token(int(N))  --> integer(N).
+token(int(N))  --> \+ "+", integer(N).
 token(key(K))  --> codes(lower,S), {atom_codes(K,S), keyword(K)}.
 token(id(X))   --> [C], {code_type(C,alpha)}, codes(alnum,R), {atom_codes(X,[C|R]), \+ keyword(X)}.
 

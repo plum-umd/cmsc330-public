@@ -9,12 +9,6 @@ This **is** a pair project. You may work with one other person, but make sure yo
 
 2. If asked to generate multiple solutions, the order and uniqueness of solutions is irrelevant unless specified otherwise. If a predicate should succeed deterministically, you are not required to prune redundant choice points provided that no _distinct_ solutions are generated on backtracking. Your code is tested by inspecting sets of solutions using extra-logical predicates.
 
-3. The extra credit will be graded as follows:
-  - For each of the extra credit portions, a minimum of 50% of available points must be earned to earn ANY credit for that portion
-  - If the 50% threshold is met, credit will be awarded as normal (i.e. [points received / points possible])
-  - The extra credit will be weighted as 3% of your final course grade
-    - Completing this extra credit will give you as many extra points as project 2a was worth towards your grade! This is *real* extra credit!
-
 Introduction
 ------------
 Welcome to Prolog! This project contains five sections: arithmetic, lists, binary trees, operational semantics and finite automata. Each section begins with familiar exercises, mostly drawn from previous projects, so that solutions can be adapted and compared between OCaml and Prolog. The exercises in each section are arranged in roughly increasing difficulty. Tests are independent between sections, so you can skip between them without worrying about dependencies.
@@ -30,7 +24,6 @@ To begin this project, you will need to commit any uncommitted changes to your l
   - **list.pl**:  This file is the place you will implement part 2, the list module.
   - **opsem.pl**:  This file is the place you will implement part 3, the operational semantics module.
   - **nfa.pl**:  This file is the place you will implement part 4, the finite automata module.
-  - **binary.pl**:  This file is the place you **may** implement part 5, the binary search tree module. This section is **extra credit**.
 - Provided Prolog files (no need to edit, changes will be overwritten!)
   - **lexer.pl**: This file implements the SmallC lexer.
   - **parser.pl**: This file implements the SmallC parser.
@@ -172,13 +165,13 @@ Pairs = [(1, 0),  (2, 1),  (1, 2),  (2, 3)].
 - **Usage:** If `NestedList` is a list, then `flat(NestedList,FlatList)` succeeds with one solution for `FlatList`.
 
 ```
-?- flatten([],FlatList).
+?- flat([],FlatList).
 FlatList = [].
 
-?- flatten([1,[3]],FlatList).
+?- flat([1,[3]],FlatList).
 FlatList = [1, 3].
 
-?- flatten([1,[[2],3],[4,[]],FlatList).
+?- flat([1,[[2],3],[4,[]]],FlatList).
 FlatList = [1, [2], 3, 4, []].
 ```
 
@@ -342,142 +335,6 @@ Strings = [[a, a], [b, a]].
 
 ?- setof(U,enumerate(M,3,U),Strings).
 Strings = [[a, a, a], [a, b, a], [b, a, a], [b, b, a]].
-```
-
-Extra Credit: Binary Search Trees (binary.pl)
----------------------------------------------
-For extra credit, implement a binary search tree in Prolog. The set of binary search trees is defined inductively as follows: `leaf` is a binary search tree; and `node(X,L,R)` is a binary search tree with key `X` whenever `X` is a positive integer, `L` is a binary search tree with `Y < X` for every key `Y` in `L`, and `R` is a binary search tree with `Y > X` for every key `Y` in `R`. Note that binary search trees have unique keys according to this definition. Your implementation of binary search trees should resemble your implementation from [Project 2(b)](../projects/p2b#part-2-integer-bst).
-
-- **Predicate:** `card(Bst,Card)`
-- **Description:** `Card` is the number of elements in `Bst`
-- **Usage:** If `Bst` is a binary search tree, then `card(Bst,Card)` succeeds with one solution for `Card`.
-
-```
-?- card(leaf,Card).
-Card = 0.
-
-?- card(node(1,leaf,leaf),Card).
-Card = 1.
-
-?- card(node(2,node(1,leaf,leaf),node(3,leaf,leaf)),Card).
-Card = 3.
-```
-
-- **Predicate:** `height(Bst,Height)`
-- **Description:** `Height` is the height of `Bst`.
-- **Usage:** If `Bst` is a binary search tree, then `height(Bst,Height)` succeeds with one solution for `Height`.
-
-```
-?- height(leaf,Height).
-Height = 0.
-
-?- height(node(3,leaf,leaf),Height).
-Height = 1.
-
-?- height(node(3,leaf,node(5,leaf,leaf)),Height).
-Height = 2.
-```
-
-- **Predicate:** `elem(Bst,Elem)`
-- **Description:** `Elem` is an element of `Bst`
-- **Usage:** If `Bst` is a binary search tree and `Elem` a positive integer, then `elem(Bst,Elem)` succeeds iff `Elem` is an element of `Bst`.
-
-```
-?- elem(leaf,_).
-false.
-
-?- elem(node(3,node(1,leaf,leaf),node(5,leaf,leaf)),2).
-true.
-
-?- elem(node(3,node(1,leaf,leaf),node(5,leaf,leaf)),2).
-false.
-
-```
-
-- **Predicate:** `insert(Bst,Elem,New)`
-- **Description:** `New` is the result of adding `X` to `Bst`.
-- **Usage:** If `Bst` is a binary search tree and `Elem` a positive integer, then `insert(Bst,Elem,New)` succeeds with one solution for `New`.
-
-```
-?- insert(leaf,1,T).
-T = node(1, leaf, leaf).
-
-?- insert(node(1,leaf,leaf),5,New).
-New = node(1, leaf, node(5, leaf, leaf)).
-
-?- insert(node(1,leaf,node(5,leaf,leaf)),3,New).
-New = node(1, leaf, node(5, node(3, leaf, leaf), leaf)).
-```
-
-- **Predicate:** `inorder(Bst,Elems)`
-- **Description:** `Elems` is an inorder traversal of `Bst`.
-- **Usage:** If `Bst` is a binary search tree, then `inorder(Bst,Elems)` succeeds with one solution for `Elems`
-
-```
-?- inorder(leaf,Inorder).
-Inorder = [].
-
-?- inorder(node(3,leaf,node(5,leaf,leaf)),Inorder).
-Inorder = [3, 5].
-
-?- inorder(node(3,node(1,leaf,leaf),node(5,leaf,leaf)),Inorder).
-Inorder = [1, 3, 5].
-```
-
-- **Predicate:** `bst(Bst)`
-- **Description:** `Bst` is a binary search tree.
-- **Usage:** `bst(Bst)` succeeds iff `Bst` is a binary search tree.
-
-```
-?- bst(leaf).
-true.
-
-?- bst(node(3,node(5,leaf,leaf),node(1,leaf,leaf))).
-false.
-
-?- bst(node(3,node(1,leaf,leaf),node(5,leaf,leaf)))         
-true.
-```
-
-- **Predicate:** `delete(Bst,Elem,New)`
-- **Description:** `New` is the result of removing `Elem` from `Bst`
-- **Usage:** If `Bst` is a binary search tree and `Elem` a positive integer, then `delete(Bst,Elem,New)` succeeds with one solution for `New`.
-
-```
-?- delete(leaf,_,New).
-New = leaf.
-
-?- delete(node(3,node(1,leaf,leaf),leaf),1,New).
-New = node(3, leaf, leaf).
-
-?- delete(node(3,node(1,leaf,leaf),node(5,node(4,leaf,leaf),node(6,leaf,leaf))),5,New), inorder(New,Inorder).
-Inorder = [1, 3, 4, 6].
-```
-
-- **Predicate:** `enumerate_bst(Elems,Bst)`
-- **Description:** `Elems` is an inorder traversal of `Bst`.
-- **Notes:** The number of binary search trees with `N` keys is the `N`th [Catalan number](https://en.wikipedia.org/wiki/Catalan_number).
-- **Usage:** If `Elems` is an inorder traversal of a binary search tree, then `enumerate_bst(Elems,Bst)` succeeds with all solutions for `Bst`.
-- **Hints:** What happens when you run `inorder/2` with `Bst` uninstantiated? Why does this happen?
-
-```
-?- setof(Bst,enumerate_bst([],Bst),Enum).
-Enum = [leaf].
-
-?- setof(Bst,enumerate_bst([1,2],Bst),Enum).
-Enum = [
-    node(1, leaf, node(2, leaf, leaf)),
-    node(2, node(1, leaf, leaf), leaf)
-].
-
-?- setof(Bst,enumerate_bst([1,2,3],Bst),Enum).
-Enum = [
-    node(1, leaf, node(2, leaf, node(3, leaf, leaf))),
-    node(1, leaf, node(3, node(2, leaf, leaf), leaf)),
-    node(2, node(1, leaf, leaf), node(3, leaf, leaf)),
-    node(3, node(1, leaf, node(2, leaf, leaf)), leaf),
-    node(3, node(2, node(1, leaf, leaf), leaf), leaf)
-].
 ```
 
 Project Submission and Grading
