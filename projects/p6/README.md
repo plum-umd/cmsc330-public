@@ -213,9 +213,30 @@ Part 3: Operational Semantics (opsem.pl)
 ----------------------------------------
 In this section, you will implement an interpreter for a fragment of SmallC. The key observation is that the semantics for SmallC are given by natural deduction rules, which are identical in structure to Prolog clauses. If this isn't obvious, consider reviewing the slides on [operational semantics](https://www.cs.umd.edu/class/spring2017/cmsc330/lectures/semantics.pdf) and [Prolog](https://www.cs.umd.edu/class/spring2017/cmsc330/lectures/prolog1.pdf) before beginning this section. Once you understand the relationship between the operational semantics and Prolog clauses, implementing the interpreter should be an exercise in translation.
 
-We have provided a parser, type checker and driver to make testing your interpreter easier. The parser and type checker perform no error reporting, so determining the cause of failure may be difficult. The expressions and statements your interpreter should support are precisely those for which parsing and type checking have been implemented. Thus, your first task is to read and understand the type checker. Environments are represented as association lists. The elements of an association list are pairs of the form `K-V`, where `K` is the key and `V` the value. By convention, we say that `K` is bound to `V` in an environment `Env` if `V` is the leftmost binding for `K` in `Env`. The predicate `lookup/3` defined in `opsem.pl` returns the leftmost binding for a key in an association list.
+We have provided a parser, type checker and driver to make testing your interpreter easier. The parser and type checker perform no error reporting. Thus, you can assume that all expressions and statements are well-typed with respect to the environment when implementing `eval_expr/3` and `eval_stmt/3`. You are only required to interpret the fragment of SmallC for which type checking has been implementing. For reference, `eval_expr/3` must support
 
-The predicates `interpret_expr/6` and `interpret_stmt/4` can be used to test your implementation. You are referred to the documentation in `opsem.pl` for their full specification. To use `interpret_expr/5` and `interpret_stmt/4`, you must provide a string representation of an expression, a typing environment, and initial values for all free variables in the expression or statement. The string must be syntactically correct, the expression or statement well-typed in the typing environment, and the initial values consistent with the typing environment. Your interpreter operates under these assumptions, so no error checking is required.
+- integers, represented `int(N)` where `N` is an integer;
+- booleans, represented `bool(B)` where `B` is `true` or `false`;
+- variables, represented `id(X)` where `X` is an atom;
+- negation, represented `not(E)` where `E` is an expression;
+- equality, represented `eq(E1,E2)` where `E1` and `E2` are expressions;
+- inequality, represented `lt(E1,E2)` where `E1` and `E2` are expressions;
+- disjunction, represented `or(E1,E2)` where `E1` and `E2` are expressions;
+- addition, represented `plus(E1,E2)` where `E1` and `E2` are expressions; and
+- multiplication, represented `mult(E1,E2)` where `E1` and `E2` are expressions.
+
+Similarly, `eval_stmt/3` must support
+
+- the empty statement, represented `skip`;
+- sequencing, represented `seq(S1,S2)` where `S1` and `S2` are statements;
+- variable declaration, represented `decl(T,X)` where `T` is one of `int` or `bool` and `X` is an atom;
+- variable assignment, represented `assign(X,E)` where `X` is an atom and `E` an expression;
+- while loops, represented `while(G,B)` where `G` is an expression and `B` a statement; and
+- conditionals, represented `cond(G,T,E)` where `G` is an expression and `T` and `E` statements.
+
+Environments are represented as association lists. The elements of an association list are pairs of the form `K-V` where `K` is a key and `V` the value. By convention, we say that `K` is bound to `V` in an environment `Env` if `V` is the leftmost binding for `K` in `Env`. The examples below assume that assignment doesn't overwrite variable bindings. Thus, your implementation may not match the examples exactly. The predicate `lookup/3` defined in `opsem.pl` returns the leftmost binding for a key in an association list.
+
+The predicates `interpret_expr/6` and `interpret_stmt/4` can be used to test your implementation. You are referred to the documentation in `opsem.pl` for their full specification. To use `interpret_expr/5` and `interpret_stmt/4`, you must provide a string representation of an expression, a typing environment, and initial values for all free variables in the expression or statement. The string must be syntactically correct, the expression or statement well-typed in the typing environment, and the initial values consistent with the typing environment. As mentioned above, your interpreter operations under these assumptions; no error checking is required.
 
 - **Predicate:** `eval_expr(Env,Expr,Value)`
 - **Description:** `Expr` evaluates to value `Value` in environment `Env`.
@@ -241,7 +262,7 @@ Value = false.
 
 ```
 ?- interpret_stmt("int x; x = 1;",[],[],Env).
-Env = [x-1].
+Env = [x-1, x-0].
 
 ?- interpret_stmt("int x; bool p; if (x < 3) {x = x + 1; p = !p;}",[],[],Env).
 Env = [p-true, x-1, p-false, x-0]
