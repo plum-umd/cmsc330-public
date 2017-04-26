@@ -10,7 +10,7 @@ You may use any [built-in](http://www.swi-prolog.org/pldoc/man?section=builtin) 
 
 Requirements
 -----------
-You are not required to implement every predicate described below in order to receive extra credit. Rather, you must implement enough to pass at least half the tests. We recommend implementing at least `card/2`, `height/2`, `elem/2`, `insert/3`, `inorder/2` and `bst/1`. The most challenging predicate is `enumerate/2`, which has multiple elegant solutions whose expression you should find more natural in Prolog than imperative languages. There are no public tests for extra-credit assignments. If you feel there is a mistake in grading, please talk to an instructor.
+You are not required to implement every predicate described below in order to receive extra credit. Rather, you must implement enough to pass at least half the tests. We recommend implementing at least `card/2`, `height/2`, `elem/2`, `insert/3`, `inorder/2` and `bst/1`. The most challenging predicate is `enumerate/2`, which has multiple elegant solutions whose expression you should find more natural in Prolog than imperative languages. There are no public tests for extra-credit assignments. Release and secret tests will be weighted equally.
 
 Binary Search Trees
 -------------------

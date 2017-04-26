@@ -10,7 +10,7 @@ You may use any [built-in](http://www.swi-prolog.org/pldoc/man?section=builtin) 
 
 Requirements
 ------------
-You are not required to implement every predicate described below in order to receive extra credit. Rather, you must implement enough to pass at least half the tests. We recommend implementing at least `move/2`, `inversions/2`, `solvable/2`, `hamming/3`, `coordinate/4` and `manhattan/3`. Implementing `solve_bounded/4` requires performing depth-first search with a depth bound, and should be familiar from the project. The most challenging predicate is the efficient solver, `solve/4`, which is worth one quarter of the allocated points. There are no public tests for extra-credit assignments. If you feel there is a mistake in grading, please talk to an instructor.
+You are not required to implement every predicate described below in order to receive extra credit. Rather, you must implement enough to pass at least half the tests. We recommend implementing at least `move/2`, `inversions/2`, `solvable/2`, `hamming/3`, `coordinate/4` and `manhattan/3`. Implementing `solve_bounded/4` requires performing depth-first search with a depth bound, and should be familiar from the project. The most challenging predicate is the efficient solver, `solve/4`, which is worth one quarter of the allocated points. There are no public tests for extra-credit assignments. Release and secret tests will be weighted equally. You shouldn't be concerned about timeouts if you give reasonable implementations of the suggested algorithms.
 
 Problem Description
 -------------------
@@ -47,7 +47,7 @@ Moves = [
 
 Solvability
 -----------
-Not every eight-puzzle is solvable. Fortunately, there is a simple algorithm to determine whether a puzzle has a solution. An inversion is a pair `(I,J)` of tiles such that `J > I` and `I` occurs before `J` when the board is represented as a list. You can check that every move preserves the [parity](https://en.wikipedia.org/wiki/Parity_(mathematics)) of the number of inversions in a board. In particular, the goal board has no inversions and therefore is not reachable from any board having an odd number of inversions. Conversely, one can show that every board having an even number of inversions is solvable. The following predicates implement the solvability check.
+Not every eight-puzzle is solvable. Fortunately, there is a simple algorithm to determine whether a puzzle has a solution. An inversion is a pair `(I,J)` of tiles such that `I > J` and `I` occurs before `J` when the board is represented as a list. You can check that every move preserves the [parity](https://en.wikipedia.org/wiki/Parity_(mathematics)) of the number of inversions in a board. In particular, the goal board has no inversions and therefore is not reachable from any board having an odd number of inversions. Conversely, one can show that every board having an even number of inversions is solvable. The following predicates implement the solvability check.
 
 - **Predicate:** `inversions(Board,N)`
 - **Description:** `N` is the number of inversions in `Board`.
