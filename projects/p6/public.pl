@@ -280,7 +280,7 @@ test(move_enum_from,[set(A-I == [a-0,a-1,b-0])]) :-
     nfa_third_last(M),
     move(M,0,A,I).
 
-tets(move_enum_on,[set(I-J == [0-0,0-1])]) :-
+test(move_enum_on,[set(I-J == [0-0,0-1,1-2,2-3])]) :-
     nfa_third_last(M),
     move(M,I,a,J).
 
