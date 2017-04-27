@@ -1,0 +1,429 @@
+<!--#include virtual="header.html" -->
+
+<body>
+
+<h1 class="title">Project 6 - Computer Security </h1>
+<center>
+Due 11:59pm Thursday, December 10, 2015
+</center>
+
+<p>
+
+</center>
+
+<h2>Updates</h2>
+
+<ul>
+  <li>2 Dec, 9am: Updated <a href = "client.rb">client.rb</a> and <a
+  href = "ftp.rb">ftp.rb</a> to avoid issues with buffered input.
+<li>1 Dec, 8am: Updated <a href = "tests/test.rb">test.rb</a> to work
+  more reliably (you can just download this file and put it in your
+  tests directory, or redownload the whole zip file) 
+</ul>
+
+<h2>Introduction</h2>
+
+<p>
+The goal of this project is to make you more aware of software errors
+that impact a program's security. You are given two Ruby programs that
+implement the client and server portions of a simplified FTP
+server. Your job is to find and fix security-relevant defects in these
+programs (without breaking normal operations).
+</p>
+
+<p>
+<b>This project is due in one week!</b> You should get started right
+away. You will need to familiarize yourself with the code so that you
+can see its weaknesses.
+</p>
+
+<p>
+<b>This is a pair project.</b> You may work on this with another
+student. Be sure you include both your name and your partner's name in
+the corrected code that you submit.
+</p>
+
+<h2>Getting Started</h2>
+
+Download the following archive file <a href="p6.zip">p6.zip</a>
+and extract its contents.
+<p>
+Along with files used to make direct submissions to the
+submit server (submit.jar, .submit, submit.rb), you will
+find the following project files (among others):
+</p><ul>
+  <li>FTP client - <a href = "client.rb">client.rb</a>
+  <li>Buggy FTP server - <a href="ftp.rb">ftp.rb</a>
+  <li>a directory containing some sample user files - users
+  <li>another users directory, used by the tests (so don't change) - users_unfutzed
+  <li>Public tests
+<ul>
+  <li> <a href="tests/test0">test0</a> - logging in
+  <li> <a href="tests/test1">test1</a> - directory listing
+  <li> <a href="tests/test2">test2</a> - trying to get an absent file
+  <li> <a href="tests/test3">test3</a> - getting an available file
+  <li> <a href="tests/test4">test4</a> - putting a file
+  <li> <a href="tests/test5">test5</a> - listing the public directory
+  <li> <a href="tests/test6">test6</a> - trying to put an absent file
+  <li> <a href="tests/test7">test7</a> - listing without logging in
+  <li> <a href="tests/test8">test8</a> - writing a public file and
+  trying to overwrite it
+  <li> <a href="tests/test9">test9</a> - writeing a public file and
+  then downloading it
+  <li> <a href="tests/test10">test10</a> - changing users and
+  listing directory contents
+  <li> <a href="tests/test11">test11</a> - trying to get a file
+  without authenticating
+  <li> <a href="tests/test12">test12</a> - trying to get a public file
+  without authenticating
+  <li> <a href="tests/test13">test13</a> - one user trying to get
+  another's file
+</ul>
+</li>
+<li><a href="makeaccts.rb">makeaccts.rb</a> changes the passwords for user accounts and tests
+<li><a href="tests/test.rb">test.rb</a> test harness in the tests directory
+  <li><a href ="runtests.rb">runtests.rb</a> - runs all of the public
+  tests. <b>Warning</b>: will clobber the users directory with users_unfutzed
+</ul>
+
+<h2>Running the FTP client and server</h2>
+
+To use FTP, you have to start the FTP server in directory it is
+serving files from. It will <i>listen</i> on a particular TCP port for
+connection requests. A client then connects to the server on that
+port, and repeatedly sends it commands. These commands including
+getting (downloading) files, putting (uploading) files, listing
+directories, etc. A full list of commands is below.
+
+<h3>Setup</h3>
+
+<p>The FTP server must be run in a directory with a subdirectory
+<tt>users</tt>. This directory contains a file <tt>accounts</tt>,
+which contains the list of usernames, passwords, and home directories
+(each, separated by a comma). The <tt>users</tt> directory also
+contains a subdirectory for each listed user, per the accounts file
+specification. Finally, it contains a subdirectory <tt>public</tt>
+that stores publicly readable files, and may contain files written by
+any user. User directories, and the public directory, contain no
+subdirectories. <b>See below for how to set up these directories for
+testing on Grace.</b>
+
+<h3>Starting the server</h3>
+
+<p>To run the FTP server, in one window you can execute the command
+<pre>
+ruby ftp.rb 
+</pre>
+You will see on the console something like this:
+<pre>
+Starting server on TCP port 39010
+</pre>
+This says that the server is now waiting to receive connections on TCP
+port 39010. The port is randomly generated. To use a specific port,
+you can enter it just after specifying <tt>server</tt>, i.e., by
+running <tt>ruby ftp.rb 1337</tt> you specify port 1337.
+<b>Please see below for picking a suitable port when testing on Grace.</b>
+</p>
+
+
+<h3>Starting the client</h3>
+
+Once you have started the FTP server you can connect to it with a
+client. In another window, execute the command
+<pre>
+ruby client.rb 39010
+</pre>
+Here, 39010 is whatever TCP port the server is listening on. If the
+client is able to successfully connect, you will see the following
+message:
+<pre>
+Hi I'm a friendly FTP server
+>
+</pre>
+The "greater than" is the command prompt. At this prompt you can enter
+commands that will be sent to the server for processing. To terminate
+a client connection, you can enter either CTRL-D or CTRL-C at the
+client prompt. When you do, the program will exit, and the server will
+print <tt>Closed connection</tt>.
+
+<p><b>Do not change the client</b>. All the bugs are in the server. We
+will overwrite any client you submit with our own, during testing.
+
+<h3>FTP commands</h3>
+
+The FTP client accepts the following commands at the command
+prompt. These are translated into messages sent to/from the server to
+carry them out. Below we are describing how the commands
+<i>should</i> work, but because of bugs in the server
+code, they may not actually work this way --- you have to figure out
+where the bugs are and correct them. (And there may be other bugs not
+evident in this description; see the discussion of the security model
+further down.)
+
+<p>
+<table border="1">
+
+<tr>
+<th> <b>Command</b>
+<th> <b>Argument</b>
+<th> <b>Description</b>
+<th> <b>Example</b>
+</tr>
+
+<tr>
+<td> user
+<td> <i>username</i>
+<td> Specifies which user's files we are interested in. However, we
+  are not to be granted access to those files until entering a correct
+  password with the <tt>pass</tt> command.
+<td> <tt>user josh </tt> specifies that Josh is the username.
+</tr>
+
+<tr>
+<td> pass
+<td> <i>password</i>
+<td> Specifies the password of the user specified with the
+  <tt>user</tt> command. If the password is correct, then the user is
+  logged in and is given access to the user's files.
+<td> <tt>pass 12345 </tt> specifies that the current user's password
+</tr>
+
+<tr>
+<td> get
+<td> <i>filepath</i>
+<td> Specifies a file to download. The format of legal filepaths is
+  given below. The file will be placed in the current working
+  directory of the client program.
+<td> <tt>get info.txt </tt> downloads the <tt>info.txt</tt> file
+  assuming it is among the current user's files on the server. <tt>get
+  public/note.txt</tt> downloads the public file <tt>note.txt</tt>
+</tr>
+
+<tr>
+<td> put
+<td> <i>filepath</i>
+<td> Specifies a file to upload. The format of legal filepaths is
+  given below. The file will always be read from the client's current
+  working directory. If the filepath has the <tt>public/</tt>
+  prefix then it is placed in the public directory on the
+  server. Otherwise it is placed in the current user's files at the server,
+  assuming a user has been specified along with a correct password.
+<td> <tt>put newinfo.txt </tt> uploads the <tt>newinfo.txt</tt> file
+  to the current user's directory (assuming one has been
+  specified/authenticated) whereas <tt>put public/newinfo.txt</tt>
+  puts the same file in the public directory.
+</tr>
+
+<tr>
+<td> ls
+<td> none, or <tt>public</tt>
+<td> If no argument is given, lists the current user's files (if
+  specified and a password has been properly entered). If the
+  <tt>public</tt> argument is given, then all of the public files are
+  listed. 
+<td>
+</tr>
+
+<tr>
+<td> exit
+<td> none
+<td> Logs out the current user (if one was logged in)
+<td>
+</tr>
+
+</table>
+
+<p> The <i>filepath</i> argument of the <tt>get</tt> and <tt>put</tt>
+has the following format. It consists of an optional <tt>public/</tt>
+prefix, followed by any combination of (upper and lowercase) letters,
+numbers, dashes, underscores, and periods, with the exception that
+<tt>.</tt> and <tt>..</tt> (alone) are not legal filenames. The
+following are examples of legal filepaths:
+<pre>
+file.txt
+public/12ABxx
+.foo..BAR
+public/foo_bar--baz89
+</pre>
+These are illegal filepaths:
+<pre>
+public/bar/baz.txt
+./public/bar.doc
+my daughter ate; lovely
+..
+</pre>
+The first is illegal because it has a slash in <tt>bar/baz.txt</tt>,
+which is not permitted. The second is illegal because <tt>public/</tt>
+is the only legal prefix; <tt>./</tt> is not allowed. The third is
+illegal because the filename contains illegal space characters and a
+semi-colon, which is also illegal. The last is illegal because
+double-dot, on its own, is not a legal filename (but can appear in
+legal filenames, per the list of allowed examples).
+
+<h2>What to do</h2>
+
+Your job is to make sure that the FTP client/server enforces its
+security policy properly under certain assumptions.
+
+<h3>Security policy</h3>
+
+<p>The FTP server aims to implement a basic confidentiality and
+integrity policy:
+<ul>
+  <li>A user may only read or write his own files on the server, and
+  on his own client machine. He may read any public files, and may
+  upload any files to the public directory, but only so long as no
+  existing public files are overwritten.  </ul>
+
+It may be that bugs in the server allow this policy to be
+violated. Such bugs may result in direct compromise, e.g., user A is
+able to download B's file because of a bug in the download
+functionality. Or they could result in indirect compromise, e.g., user
+A is able to log in as if he was B, without knowing B's password. Or
+user A may be able to steal user B's password somehow, and then use
+that to log in. Or, user A may be able to corrupt the server in some
+way that a client, run by B, damages its local files.
+
+<h3>Attack model</h3>
+
+  <p>
+The attacker is able connect to the server and interact with it from
+  his own machine. The attacker may do so without running the proper
+  client software, i.e., it could send messages to the server in any
+  format in an attempt to confuse the server. 
+
+  <p> The attacker is <i>not</i> able to snoop on, or modify, messages
+  sent between other clients and the server. I.e., the adversary does
+  not have access to the network or a legitimate client's machine.
+  
+<h3>What you can/should do</h3>
+
+<p> The most direct way to satisfy the project is to understand the
+code we have provided, find the bugs present in ftp.rb, and fix them.
+You will know that you have succeeded when all of the semipublic tests
+pass (and all of the public tests still pass). The names of these
+tests should give you a hint as to what vulnerabilities they are
+exploiting. You may <b>change any of ftp.rb</b> you want; the only
+requirement is that all of the tests pass.<b> Do not change
+client.rb</b> however.
+
+  <h3>Testing on Grace</h3>
+
+<p>If you are testing on Grace, it's possible that some other student
+will be using the same port as the one you want, in which case starting the FTP server will
+fail.  <b>To avoid conflicts, use a port based
+on your UID.</b> In particular, you should specify the port to be 
+<i>your UID</i> mod 48128 + 1024. For example, if your UID is
+106624753 then you would use port 106624753 mod 48128 = 21233 + 1024 =
+22257. You can compute this from irb, e.g., by doing
+<pre>
+irb(main):002:0> 106624753 % 48128
+=> 21233
+irb(main):003:0> 21233+1024
+=> 22257
+irb(main):004:0>
+</pre>
+
+<p>Even with this, it's possible that you will end up choosing the
+same port as someone else, or even that an outsider might manage to
+connect to your server. As such, the passwords you use for your
+<tt>accounts</tt> file should be different from everyone else's. To
+help with this, you <b> run makeaccts.rb from the main project
+directory</b>, i.e., the one that p6.zip unzips into. This program will update the
+file <tt>users/accounts</tt> and <tt>users_unfutzed/accounts</tt> with
+the same accounts but new passwords. It will also modify the
+tests in the <tt>tests</tt> directory to use these passwords
+instead. 
+
+<h2>Submission</h2>
+
+<b>You only need to submit ftp.rb</b> that you changed. Everything
+else should be unchanged. You can submit your project in two ways:
+
+<ul>
+<li>
+Submit your basics.ml file directly to the 
+<a href="http://submit.cs.umd.edu/">submit server</a> 
+by clicking on the submit link in the column "web submission".
+
+<p>
+<img src="submit1.jpg">
+</p><p>
+
+Next, use the submit dialog to submit your basics.ml file directly.
+
+</p><p>
+<img src="submit2.jpg">
+</p><p>
+
+Select your file using the "Browse" button, 
+then press the "Submit project!" button.  
+You <b>do not</b> need to put it in a Jar or Zip file.
+Some students have mentioned problems 
+with using Internet Explorer, because 
+submissions being extracted in directories
+(e.g., "C:\My Documents\330\basics.ml") where
+the submit server could not find them.  The
+problems went away when switching to the 
+Mozilla Firefox browser.
+
+</p></li><li>
+
+</li><li>
+Submit directly by executing a Java program on a computer
+with Java and network access.  Use the submit.jar file 
+from the archive p6.zip.
+To submit, go to the directory containing your project, then either
+execute submit.rb or type the following command directly:
+<p> 
+
+</p><center>
+<tt>
+java -jar submit.jar
+</tt>
+</center>
+<p>
+
+You will be asked to enter your class account and password, then
+all files in the directory (and its subdirectories) will be
+put in a jar file and submitted to the submit server.  
+If your submission is successful you will see the message:
+</p><p> 
+
+</p><center>
+<tt>
+Successful submission #<submission_number> received for project 6
+</submission_number></tt>
+</center>
+<p>
+
+</p></li></ul>
+
+<h2>Academic Integrity</h2>
+
+<p>
+The Campus Senate has adopted a policy asking students to include the
+following statement on each assignment in every course: "I pledge on
+my honor that I have not given or received any unauthorized assistance
+on this assignment."  Consequently your program is requested to
+contain this pledge in a comment near the top.
+
+</p><p>
+Please <b>carefully read</b> the academic honesty section of the
+course syllabus.  <b>Any evidence</b> of impermissible cooperation on
+projects, use of disallowed materials or resources, or unauthorized
+use of computer accounts, <b>will be submitted</b> to the Student
+Honor Council, which could result in an XF for the course, or
+suspension or expulsion from the University.  Be sure you understand
+what you are and what you are not permitted to do in regards to
+academic integrity when it comes to project assignments.  These
+policies apply to all students, and the Student Honor Council does not
+consider lack of knowledge of the policies to be a defense for
+violating them.  Full information is found in the course
+syllabus---please review it at this time.
+
+
+</p></li></td>
+</tr></tbody></table>
+
+</body></html>

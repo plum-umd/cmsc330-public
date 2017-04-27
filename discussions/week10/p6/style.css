@@ -1,0 +1,111 @@
+body {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 12px;
+  margin-right: 20px;
+}
+table { font-size: 12px; }
+ul { font-size: 12px; }
+h1 { font-size: 200%; }
+h2 { font-size: 150%; }
+h3 { font-size: 100%; }
+
+div.header {
+  border: none;
+  background-color: rgb(204,204,255);
+  padding: 0.5em
+}
+
+div.announce {
+  border: solid;
+  border-width: thin;
+  overflow: auto;
+  height:300px;
+  width: 90%;
+}
+
+h1.title {
+  color: rgb(255,0,51);
+  width: 100%;
+  text-align: center;
+  font-size: 150%;
+}
+
+table.menu th {
+  text-align: center;
+}
+table.menu td {
+  vertical-align: top;
+  text-align: right;
+  font-weight: bold;
+  font-size: 10px;
+  padding-bottom: 10pt;
+}
+table.menu a {
+  color: rgb(255,0,51);
+}
+
+table.info th {
+  text-align: right;
+  padding-right: 5pt;
+  padding-bottom: 7pt;
+  vertical-align: top;
+}
+table.info td {
+  padding-right: 5pt;
+  padding-bottom: 7pt;
+}
+
+table.staff {
+  border-collapse: collapse;
+}
+table.staff th {
+  background:#F0F0FF;
+  padding: 4pt;
+  text-align: center;
+}
+table.staff td {
+  padding: 4pt;
+}
+table.staff td.name {
+  text-align: right;
+}
+
+table.hours {
+  font-size: 10px;
+  border-collapse: collapse;
+}
+table.hours tr.header {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Tables with colored backgrounds */
+.coltab {
+	border-collapse:collapse;
+	margin:5px 0px 10px 0px;
+}
+.coltab th {
+	background:#FFFF99;
+	border:1px solid #C0C0C0;
+	padding:5px;
+}
+.coltab td {
+	border:1px solid #C0C0C0;
+	padding:5px;
+}
+
+a {
+  text-decoration: none;
+}
+a:link {
+  color: blue;
+}
+a:hover {
+  background-color: silver;
+}
+a:visited {
+  color:purple;
+}
+

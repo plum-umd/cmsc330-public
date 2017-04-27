@@ -1,0 +1,15 @@
+Hi I'm a friendly FTP server
+<user josh
+Welcome josh
+<pass aVQENHOS98iQDJpe
+Hi josh, you are now logged in
+<put public/example.txt
+Put file public/example.txt, size 29 bytes
+<exit
+User josh logged out
+<user saurav
+Welcome saurav
+<pass P6n3qUu4opLj5b2l
+Hi saurav, you are now logged in
+<put public/example.txt
+You do not have permissions to put that file there
