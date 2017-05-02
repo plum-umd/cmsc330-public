@@ -1,0 +1,482 @@
+
+/* #dropdownContainer {
+  border-bottom: 2px dotted rgb(213, 213, 213);
+} */
+
+#selectMenus-button {
+  top: 50;
+  display: inline-block;
+  margin: 25 30;
+}
+
+h1#pageHeader {
+  position: relative;
+  margin: auto;
+  top: 50;
+  padding-bottom: 25px;
+  border-bottom: 2px dotted rgb(213, 213, 213);
+}
+
+h1.menu-name {
+  font-style: italic;
+  text-align: center;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 14pt;
+	font-variant: small-caps;
+	margin: 0px;
+  color: black;
+}
+
+form {
+  text-align: center;
+}
+
+#firstP {
+  position: relative;
+  top: -20;
+}
+
+#nameDiv {
+  width: 50%;
+  position: relative;
+  float: left;
+}
+
+#nameDiv input {
+  width: 80%;
+}
+
+#priceDiv {
+  width: 50%;
+  position: relative;
+  float: left;
+}
+
+#priceDiv input {
+  width: 80%;
+}
+
+#descriptionDiv {
+  clear: left;
+  padding-top: 10;
+  bottom: 75;
+  position: relative;
+}
+
+#logoContainer {
+  display: inline-block;
+  position: relative;
+  top: 60px;
+  height: 100px;
+  text-align: center;
+  color: black;
+}
+
+#logo {
+  position: relative;
+  margin: 0 auto;
+}
+
+#logo-seal {
+  position: relative;
+  top: 25;
+}
+
+#logo-text {
+  color: inherit;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+}
+
+#menusDiv {
+  width: 75%;
+  position: relative;
+  margin: 25 90;
+  float: left;
+}
+
+a.dt-button, a.paginate_button {
+  border-radius: 10px !important;
+}
+
+.ui-icon {
+  background-image: url(http://download.jqueryui.com/themeroller/images/ui-icons_ff0000_256x240.png);
+}
+
+.ui-icon:hover {
+  cursor: pointer;
+}
+
+td.sorting_1 {
+  text-align: center;
+}
+
+.dataTables_wrapper {
+  position: relative;
+  margin: 30 100 auto auto;
+  width: 70%;
+  border: 1px solid gray;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.dt-button {
+  left: 20;
+  top: 3;
+}
+
+.dataTables_info {
+  margin: 10 000;
+  left: 20;
+  position: relative;
+  bottom: 4;
+}
+
+.dataTables_paginate {
+  margin: 10 0 0 0;
+  right: 15;
+  position: relative;
+  bottom: 5;
+}
+
+#modalContainer label::first-letter {
+    text-transform: capitalize;
+}
+
+#modalContainer label {
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 14pt;
+	font-variant: small-caps;
+	margin: 0px;
+  margin-top: 100;
+  color: black;
+}
+
+label {
+  display: block;
+  position: relative;
+}
+
+#menusDiv label {
+  top: 10;
+  right: 20;
+}
+
+table {
+  margin: 40 0 !important;
+  width: 100%;
+  top: 20;
+  position: relative;
+}
+
+h1::first-letter {
+    text-transform: capitalize;
+}
+
+h1 {
+  text-align: center;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 24pt;
+	font-variant: small-caps;
+	margin: 0px;
+  margin-top: 100;
+  color: black;
+}
+
+/* The Modal (background) */
+#dataContainer {
+  bottom: 70;
+  text-align: left;
+  position: relative;
+  left: 40;
+}
+
+#modalContainer input {
+  z-index: 5;
+  position: relative;
+  text-align: center;
+}
+
+#modalContainer input[type=text], input[type=password] {
+  /* width: 100%; */
+  padding: 12px 20px;
+  margin: 15px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  /* width: 100%; */
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#buttonContainer {
+  position: relative;
+  background-color: #f1f1f1;
+  bottom: 100;
+  height: 50px;
+}
+
+/*
+button::first-letter {
+  text-transform: uppercase;
+}
+*/
+
+textarea:focus::-webkit-input-placeholder {
+    opacity: 0;
+}
+
+#modalContainer input, textarea {
+  color: black;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	font-size: 12pt;
+}
+
+#modalContainer textarea {
+  width: 70%;
+}
+
+button {
+  /* color: black; */
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 12pt;
+	font-variant: small-caps;
+}
+
+/* Extra styles for the cancel button */
+#cancelButton {
+  position: relative;
+  right: 50;
+  float: right;
+  width: auto;
+  background-color: #f44336;
+}
+
+#submitButton {
+  position: relative;
+  left: 50;
+  float: left;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.hidden {
+  display: none;
+  opacity: 0; /* Hidden by default */
+  -webkit-transition: opacity 1s ease-in;
+     -moz-transition: opacity 1s ease-in;
+      -ms-transition: opacity 1s ease-in;
+       -o-transition: opacity 1s ease-in;
+          transition: opacity 1s ease-in;
+}
+
+.shown {
+  display: block;
+  opacity: 1;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  width: 70vw;
+  border: 1px solid #888;
+  height: 500px;
+  /* -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px; */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+@-webkit-keyframes animateZoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@-webkit-keyframes animateReverseZoom {
+  from {-webkit-transform: scale(1)}
+  to {-webkit-transform: scale(0)}
+}
+
+.zoom {
+  -webkit-animation: animateZoom 0.6s;
+  animation: animateZoom 0.6s
+}
+
+.reverseZoom {
+  -webkit-animation: animateReverseZoom 0.6s;
+  animation: animateReverseZoom 0.6s;
+}
+
+/*
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(1)}
+  to {-webkit-transform: scale(0)}
+}
+*/
+
+.fadeOut {
+  -webkit-animation: fade-out .5s ease-in;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: 1;
+  width: 100px;
+  height: 100px;
+  opacity: 1;
+}
+
+.psw a {
+  color: black;
+  text-decoration: none;
+}
+
+.psw::first-letter {
+  text-transform: uppercase;
+}
+
+.psw {
+  color: black;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 12pt;
+	font-variant: small-caps;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltiptext::first-letter {
+  text-transform: uppercase;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  #cancelButton {
+    width: 100%;
+  }
+}

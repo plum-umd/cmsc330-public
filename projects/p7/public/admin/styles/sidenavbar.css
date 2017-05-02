@@ -1,0 +1,126 @@
+body {
+  color: black;
+  font-family: "Lato", sans-serif;
+}
+
+#top {
+  text-align: center;
+}
+
+#logoContainer {
+  display: inline-block;
+  border: 1px;
+  border-color: #818181;
+  position: relative;
+  margin-bottom: 50px;
+  color: white;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#logo-text {
+  color: white;
+}
+
+#logo-text p {
+  margin: -20;
+}
+
+#logo {
+  display: inline-block;
+}
+
+.vertical-text-container {
+  position: absolute;               /* 2 */
+  top: 50%;                         /* 3 */
+  transform: translate(0, -50%)   /* 4 */
+}
+
+span.vertical-text {
+  -webkit-transform:rotate(90deg) translate(0, 240px);
+  -moz-transform:rotate(90deg) translate(0, 240px);
+  -o-transform: rotate(90deg) translate(0, 240px);
+  -ms-transform:rotate(90deg) translate(0, 240px);
+  transform: rotate(90deg) translate(0, 240px);
+  white-space:nowrap;
+  display:block;
+  color: #818181;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing: 1em;
+	text-transform: lowercase;
+	font-size: 16pt;
+	font-variant: small-caps;
+}
+
+span.vertical-text:hover {
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.unexpanded-sidenav {
+  position: relative;
+  float: left;
+  text-align: center;
+  background-color: #111;
+  height: 100%;
+  z-index: 10;
+  width: 50px;
+}
+
+.sidenav {
+  position: fixed;
+  float: left;
+  height: 100%;
+  width: 50px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a::first-letter {
+  text-transform: uppercase;
+}
+.sidenav a {
+  align-self: flex-start;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 16pt;
+	font-variant: small-caps;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

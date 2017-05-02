@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/common.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/sidenavbar.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/terminal.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/dashboard.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="scripts/terminal.js"></script>
+    <script type="text/javascript" src="scripts/dashboard.js"></script>
+    <script type="text/javascript" src="scripts/sidenavbar.js"></script>
+  </head>
+
+  <body>
+    <div class="unexpanded-sidenav">
+      <div class="vertical-text-container">
+        <span class="vertical-text">
+          EXPAND NAVIGATION
+        </span>
+      </div>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+      <div id="top">
+        <div id="logoContainer">
+          <div id="logo" class="larger">
+            <div id="logo-text" class="larger">
+              <p>The Warden's</p>
+            </div>
+            <div id="logo-seal" class="larger"></div>
+            <div id="logo-text" class="larger">
+              <p>Delight</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="bottom">
+        <% if admin then %> <a href="#">Dashboard</a> <% end %>
+        <!--<a href="export">Export</a>-->
+        <a href="menu">Edit Menu</a>
+        <a href="users">Edit Users</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+
+    <div id="terminal-header" class="roundedCorners">
+      <h1>
+        Server Terminal
+      </h1>
+      <p>
+        The server terminal below is provided for the convenience of restaurant
+        admins. With great power comes great responsibility &mdash; so please use
+        the terminal responsibly ...
+      </p>
+    </div>
+
+    <div id="main">
+      <div id="terminal">
+        <!-- this is where the terminal will be displayed -->
+      </div>
+    </div>
+  </body>
+</html>

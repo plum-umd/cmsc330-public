@@ -1,0 +1,159 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+@font-face {
+    font-family: cedarville-cursive;
+    src: url(../fonts/cedarville-cursive/Cedarville-Cursive.ttf);
+}
+
+@font-face {
+    font-family: la-belle-aurore;
+    src: url(../fonts/la-belle-aurore/LaBelleAurore.ttf);
+}
+
+#toolbarShader.larger {
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	-webkit-transition: background-color 1s;
+  -moz-transition: background-color 1s;
+  -ms-transition: background-color 1s;
+  -o-transition: background-color 1s;
+  transition: background-color 1s;
+}
+
+#toolbarShader.smaller {
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.7);
+	-webkit-transition: background-color 1s;
+  -moz-transition: background-color 1s;
+  -ms-transition: background-color 1s;
+  -o-transition: background-color 1s;
+  transition: background-color 1s;
+}
+
+nav.larger {
+	z-index: 6;
+  /* float: left; */
+	padding-top: 40px;
+  height: 200px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+	-webkit-transition: height 1s, padding-top 1s;
+  -moz-transition: height 1s, padding-top 1s;
+  -ms-transition: height 1s, padding-top 1s;
+  -o-transition: height 1s, padding-top 1s;
+  transition: height 1s, padding-top 1s;
+}
+
+nav.smaller {
+	z-index: 6;
+  /* float: left; */
+	padding-top: 0px;
+  height: 140;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+menu.larger {
+	z-index: 7;
+	width: 50%;
+	float: right;
+	margin-top: 30px;
+	margin-right: 100px;
+	list-style-type: none;
+	-webkit-transition: margin-top 1s;
+  -moz-transition: margin-top 1s;
+  -ms-transition: margin-top 1s;
+  -o-transition: margin-top 1s;
+  transition: margin-top 1s;
+}
+
+menu.smaller {
+	z-index: 7;
+	width: 50%;
+	float: right;
+	margin-top: 50px;
+	margin-right: 100px;
+	list-style-type: none;
+}
+
+menu a {
+	color: inherit;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	/* text-align:center; */
+	/* margin: 40px auto; */
+	text-transform: lowercase;
+	/* line-height: 145%; */
+	font-size: 16pt;
+	font-variant: small-caps;
+	margin: 0px;
+}
+
+menu li {
+	float: left;
+	margin-left: 15%;
+	margin-right: 7%;
+}
+
+#logo.larger {
+	/* float: left; */
+	/* width: 240px; */
+	-webkit-transition: margin-top 1s;
+  -moz-transition: margin-top 1s;
+  -ms-transition: margin-top 1s;
+  -o-transition: margin-top 1s;
+  transition: margin-top 1s;
+}
+
+#logo.smaller {
+	float: left;
+	width: 240px;
+	margin-top: 20px;
+	margin-left: 100px;
+}
+
+#logo-seal {
+	/* float: left; */
+	margin-bottom: 8px;
+	display: inline-block;
+	background-image: url(../images/seal.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 90;
+	width: 90;
+}
+
+#logo-text {
+	/* float: right; */
+	margin: 25px 0px;
+}
+
+#logo-text p:first-letter {
+	text-transform: uppercase;
+}
+
+#logo-text p {
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 14pt;
+	font-variant: small-caps;
+	margin: 0px;
+}
+
+.container {
+	position: relative;
+}

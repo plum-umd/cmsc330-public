@@ -1,0 +1,60 @@
+#main {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  top: 80;
+}
+
+#terminal {
+	position: relative;
+  display: inline-block;
+  left: 0px !important;
+	top: 0px !important;
+}
+
+body {
+  color: black;
+}
+
+#terminal-header {
+  position: relative;
+  display: table;
+  top: 60;
+  margin: 0 auto;
+  width: 55vw;
+  text-align: center;
+}
+
+#terminal-header h1 {
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-transform: lowercase;
+	font-size: 16pt;
+	font-variant: small-caps;
+	margin: 0px;
+  margin-top: 25;
+  color: black;
+}
+
+#terminal-header h1::first-letter {
+  text-transform: capitalize;
+}
+
+#terminal-header p {
+  /* color: black; */
+  margin: 25 40 40 40;
+  text-align: justify;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+  font-style: italic;
+	letter-spacing:0.1em;
+	font-size: 14pt;
+}
+
+.roundedCorners {
+  border:1px solid gray;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}

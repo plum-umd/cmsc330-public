@@ -1,0 +1,110 @@
+/*
+  override the body's height to make the same size as the viewport --
+  this is relatively new in CSS3
+*/
+body {
+  	height:101vh;
+}
+
+/*
+  temporarily adding in this background for the first container in the page.
+  possibly will keep once menu is being loaded -- we'll see
+  also a part of this is the li#black styling -- to make visible over
+  the image
+*/
+#page1background{
+	z-index: -1;
+	background-color: blue;
+  background-image: url("../images/background.jpg");
+  background-position: 0 -160px;
+  background-size: 100% 140%;
+  height: 100%;
+  width: 100%;
+	filter: /*blur(1px)*/ /*sepia(70%)*/ grayscale(100%) saturate(250%);
+}
+
+li#black.larger {
+	color: black;
+	-webkit-transition: color 1s;
+  -moz-transition: color 1s;
+  -ms-transition: color 1s;
+  -o-transition: color 1s;
+  transition: color 1s;
+}
+
+li#black.smaller {
+	color: white;
+}
+
+/*
+#contentBackground {
+  z-index: -1;
+  background-position: 0 -160px;
+	display: block;
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+	background-image: url(../images/grunge_rose.jpg);
+	filter: blur(1px) saturate(25%);
+}
+*/
+
+#contentContainer {
+  height: 320px;
+	clear: both;
+	z-index: 3;
+  background: rgba(0,0,0,0.7);
+  bottom: 570;
+  width: 75%;
+  margin: 0 auto;
+  display: table;
+  position: relative;
+	z-index: 5;
+	color: white;
+}
+
+.fadeout {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+     -moz-transition: opacity 2s ease-in;
+      -ms-transition: opacity 2s ease-in;
+       -o-transition: opacity 2s ease-in;
+          transition: opacity 2s ease-in;
+}
+
+.fadein {
+  opacity: 1;
+}
+
+#content {
+	margin: 0 auto;
+  display: table;
+  position: relative;
+	z-index: 5;
+	color: white;
+}
+
+#content h1 {
+  font-weight: 600;
+	font-size: 24pt;
+  color: inherit;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.1em;
+	text-align:center;
+	margin: 40px auto;
+	text-transform: lowercase;
+	line-height: 145%;
+	font-variant: small-caps;
+}
+
+#content p {
+	font-size: 16pt;
+  color: inherit;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing: 0.1em;
+	text-align: justify;
+	padding: 0 40;
+	line-height: 145%
+}

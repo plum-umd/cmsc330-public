@@ -1,0 +1,151 @@
+#menus {
+	color: black;
+	width: 70%;
+	margin: 0 auto;
+}
+
+#contentContainer {
+	text-align: center;
+  height: 175px;
+	clear: both;
+	z-index: 3;
+  background: rgba(0,0,0,0.7);
+  bottom: 570;
+  width: 75%;
+	top: -480;
+  margin: 0 auto;
+  display: table;
+  position: relative;
+	z-index: 5;
+	color: white;
+}
+
+.fadeout {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+     -moz-transition: opacity 2s ease-in;
+      -ms-transition: opacity 2s ease-in;
+       -o-transition: opacity 2s ease-in;
+          transition: opacity 2s ease-in;
+}
+
+.fadein {
+  opacity: 1;
+}
+
+#contentContainer p {
+	margin: 0 auto;
+  display: table;
+  position: relative;
+	font-size: 24pt;
+  color: inherit;
+  text-decoration: none;
+	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+	letter-spacing:0.2em;
+	text-align:center;
+	margin: 40px auto;
+	text-transform: lowercase;
+	line-height: 145%;
+	font-variant: small-caps;
+}
+
+#contentContainer p {
+	position: relative;
+	top: 50%;
+	transform: translateY(50%);
+}
+
+#contentContainer p::first-letter {
+	text-transform: capitalize;
+}
+
+/*
+  temporarily adding in this background for the first container in the page.
+  possibly will keep once menu is being loaded -- we'll see
+  also a part of this is the li#black styling -- to make visible over
+  the image
+*/
+#page1background{
+	z-index: -1;
+	background-color: blue;
+  background-image: url("../images/background.jpg");
+  background-position: 0 -160px;
+  background-size: 100% 140%;
+  height: 100%;
+  width: 100%;
+	filter: /*blur(1px)*/ /*sepia(70%)*/ grayscale(100%) saturate(250%);
+}
+
+li#black.larger {
+	color: black;
+	-webkit-transition: color 1s;
+  -moz-transition: color 1s;
+  -ms-transition: color 1s;
+  -o-transition: color 1s;
+  transition: color 1s;
+}
+
+li#black.smaller {
+	color: white;
+}
+
+/*
+  we'd like our menus, as they are added dynamically, to be given
+  alternating background colors. This way if the students succeed in
+  adding a new menu, it will be displayed in a way consistent with
+  the others.
+*/
+div.menu > div:nth-of-type(odd) {
+    /* background: #e0e0e0; */
+}
+
+div.menu > div:nth-of-type(odd) {
+    /* background: #e0e0e0; */
+}
+
+/*
+	menu specific rules
+*/
+.menu-body {
+  max-width: 680px;
+  margin: 0 auto;
+  display: block;
+  color: rgb(92, 92, 92);
+}
+
+.menu-section {
+  margin-bottom: 80px;
+}
+
+.menu-section-title {
+  font-family: georgia;
+  font-size: 50px;
+  display: block;
+  font-weight:normal;
+  margin: 20px 0;
+  text-align: Center;
+}
+
+.menu-item {
+  margin: 35px 0;
+  font-size: 18px;
+}
+
+.menu-item-name{
+  font-family: helvetica;
+  font-weight: bold;
+  border-bottom: 2px dotted rgb(213, 213, 213);
+}
+
+.menu-item-description {
+  font-style: italic;
+  font-size: .9em;
+  line-height: 1.5em;
+}
+
+.menu-item-price{
+  float: right;
+  font-weight: bold;
+  font-family: arial;
+  margin-top: -22px;
+}

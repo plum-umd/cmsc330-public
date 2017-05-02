@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Login to Warden's Delight</title>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/login.css"/>
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="styles/common.css"/> -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="scripts/auth.js"></script>
+    <script type="text/javascript" src="scripts/login.js"></script>
+  </head>
+
+  <body>
+    <div id="loginContainer">
+      <div id="loginButtonBox" class="roundedCorners">
+        <h1>Please take a moment to login ...</h1>
+        <div id="loginButtonContainer">
+          <button id="loginButton">Login</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="modalContainer" class="modal hidden">
+      <span class="close" title="Close Modal">
+       &times;
+      </span>
+
+      <!-- Modal Content -->
+      <form class="modal-content zoom">
+        <div id="logoContainer">
+          <div id="logo" class="larger">
+            <div id="logo-text" class="larger">
+              <p>The Warden's</p>
+              <p>Delight</p>
+            </div>
+            <div id="logo-seal" class="larger"></div>
+          </div>
+        </div>
+
+        <div class="container">
+          <!-- <label><b>Username</b></label> -->
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <!-- <label><b>Password</b></label> -->
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button type="submit">Login</button>
+          <!-- <input type="checkbox" checked="checked"> Remember me -->
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" id="cancelButton">Cancel</button>
+          <span class="psw tooltip">
+            Forgot <a href="#">password?</a>
+            <span class="tooltiptext">
+              Well too bad.
+            </span>
+          </span>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

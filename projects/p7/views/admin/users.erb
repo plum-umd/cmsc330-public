@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/common.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/sidenavbar.css"/>
+    <!-- <link rel="stylesheet" type="text/css" media="all" href="styles/login.css"/> -->
+    <link rel="stylesheet" type="text/css" media="all" href="styles/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/buttons.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="styles/user.css"/>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="scripts/buttons.dataTables.min.js"></script>
+    <script type="text/javascript" src="scripts/user.js"></script>
+    <script type="text/javascript" src="scripts/sidenavbar.js"></script>
+  </head>
+
+  <body>
+    <div class="unexpanded-sidenav">
+      <div class="vertical-text-container">
+        <span class="vertical-text">
+          EXPAND NAVIGATION
+        </span>
+      </div>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+      <div id="top">
+        <div id="logoContainer">
+          <div id="logo" class="larger">
+            <div id="logo-text" class="larger">
+              <p>The Warden's</p>
+            </div>
+            <div id="logo-seal" class="larger"></div>
+            <div id="logo-text" class="larger">
+              <p>Delight</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="bottom">
+        <% if admin then %><a href="dashboard">Dashboard</a><% end %>
+        <!--<a href="export">Export</a>-->
+        <a href="menu">Edit Menu</a>
+        <a href="#">Edit Users</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+
+    <div id="dropdownContainer">
+      <h1 id="pageHeader">
+        View and Edit Users
+      </h1>
+    </div>
+
+    <div id="menusDiv">
+      <!-- datatables will be dynamically generated and placed here -->
+    </div>
+
+    <!-- The Modal -->
+    <div id="modalContainer" class="modal hidden">
+      <span class="close" title="Close Modal">
+       &times;
+      </span>
+
+      <!-- Modal Content -->
+      <form class="modal-content zoom">
+        <div id="logoContainer">
+          <div id="logo" class="larger">
+            <div id="logo-text" class="larger">
+              <p id="firstP">The Warden's</p>
+              <p>Delight</p>
+            </div>
+            <div id="logo-seal" class="larger"></div>
+          </div>
+        </div>
+
+        <div class="container" id="upperDataContainer">
+          <div id="nameDiv">
+            <label><b>Username</b></label>
+            <input type="name" placeholder="Enter Username" name="name" required>
+          </div>
+
+          <div id="passDiv">
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+          </div>
+        </div>
+
+        <div class="container" id="lowerDataContainer">
+          <div id="salaryDiv">
+            <label><b>Salary</b></label>
+            <input type="number" placeholder="Enter Salary" name="salary" required <%if !admin then %> disabled <% end %>>
+          </div>
+
+          <div id="adminDiv">
+            <label><b>Admin</b></label>
+            <input type="checkbox" name="admin" <% if !admin then %> disabled <% end %>>
+          </div>
+        </div>
+
+        <div class="container" id="buttonContainer" style="background-color:#f1f1f1">
+          <button type="submit" id="submitButton">Submit</button>
+          <button type="button" id="cancelButton">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
