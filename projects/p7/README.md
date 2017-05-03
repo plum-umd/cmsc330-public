@@ -3,30 +3,65 @@ CMSC 330, Spring 2017 (Due May 11, 2017)
 
 Ground Rules
 ------------
-This **is** a pair project. If you like, each partner might take a role. One as the adversary, attacking the website and trying to identify and exploit its vulnerabilities. The other might function as the developer, fixing the vulnerabilities the pen tester alerts them to.
+This **is** a pair project. If you like, each partner might take a role: one as the adversary (or pen tester), attacking the website and trying to identify and exploit its vulnerabilities; the other, perhaps, as the developer, fixing the vulnerabilities that the pen tester alerts them to.
 
 You may work with one other person, but make sure you both make your own submissions, as you will still be graded independently. Discussing any vulnerability with anyone other than your partner is an academic integrity violation.
 
 Overview
 ------------
-In this project we provide an exploitable web server implementation for a restaurant's online menu and administration pages. This is a complete dynamic web application with three components:
+In this project we provide an exploitable implementation of a web application for a restaurant, replete with online menu and administration pages. This is a complete dynamic web application with three components:
 
-  - The web browser *front-end*, acting as a *client*, which runs code written in HTML, CSS, and JavaScript. This code is served by the back-end when the browser requests it with a URL via the Hypertext Transfer Protocol (HTTP).
-  - A *back-end*, or *server*, usually written in Ruby, NodeJS, Go, Java EE, C#, C++, or even Erlang! The server processes client HTTP requests, which may involve interactions with a database. 
-    * In addition, the back-end may sometimes host a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer). This project uses such an API; you'll read more about how this works in the API Documentation section.
+  - The *front-end* (what you see in your web browser), which acts as a *client* and is written in HTML, CSS, and JavaScript. This code is served by the back-end when the browser requests it with a URL via the Hypertext Transfer Protocol (HTTP).
+  - A *back-end*, which runs on a *server*. Back ends are usually written in Ruby, NodeJS, Go, Java EE, C#, C++, or even Erlang! Ours is, of course, written in Ruby. The back-end processes client HTTP requests, and may interact with a database. 
+    * In addition, a back-end may sometimes host a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer). This project uses such an API; you'll read more about how this works in the API Documentation section.
   - A *database* (SQLite, MySQL, PostgreSQL, MongoDB, Cassandra), often colocated with the server, stores important data and is accessed by the server in response to client requests. The server interacts with the database through some kind of query language, often SQL. 
 
 This project's back-end (written in Ruby in the file `controller.rb`) is buggy, and is vulnerable to exploitation. Your job is to identify and fix as many of the vulnerabilities as possible. You should do this by **first** understanding the security invariants we describe below (these are the things the web app *should* and *shouldn't* let you do) and **then** poking around at the website to see if the web app actually abides by those rules. Then you can modify the code that violates the rules; the **only** code you will need to change is in `controller.rb`.
 
 Running the Project
 -------------------
-To install the dependencies, run `bundle install` in the project root directory. 
 
-To run the web server, run `ruby main.rb`. Direct your browser to `http://localhost:3300/`.
+### Locally or Cloud9
+
+To install the dependencies, run `bundle install` in the project root directory. Then:
+
+- if you're running locally, run `ruby main.rb`.
+- if you're running on Cloud9, run `ruby main.rb -o $IP`.
+
+If you don't have bundler installed, you can install it by running `gem install bundler`.
+
+Finally, direct Chrome to `http://localhost:8080/`, and you should see the restaurant's main page. Remember to restart `main.rb` after changing `controller.rb`.
+
+### Grace
+
+*NB: If you're using Mac OSX, the instructions for running on Grace may not work for you -- in particular, X11 forwarding may fail at the `chrome &` step. If that is the case, see the Mac OSX instructions below.*
+
+Log into Grace using `ssh -Y <username>@grace.umd.edu`.
+
+To install the dependencies, run `bundle install --path ~/.gem` in the project root directory.
+
+Start an instance of Chrome in the background with `chrome &`. You will be able to access the site from this browser window. To run the web server, run `ruby main.rb`. Direct your browser to `http://localhost:8080/`. Remember to restart `main.rb` after changing `controller.rb`.
+
+### Mac OSX
+
+If you're reading this, it may be because you tried to run the server on Grace, but with no luck. If that is the case, you may of course resort to using Cloud9. However, given that your Mac is so well-suited for software development, this is unnecessary -- in fact, we encourage you to try and work on the project locally. If you've never worked locally before, you may have to set some things up first:
+
+- First, you'll want to pick a folder to clone the cmsc330 repo to. Once you've navigated to that folder in the terminal, run `git clone https://github.com/plum-umd/cmsc330.git`.
+- Next, you'll want to navigate to p7's root directory and run `bundle install`. If this does not work, it may be because you do not have the `bundle` gem; you may need to first run `gem install bundler`.
+- Now you can run the web server locally, as described above -- just run `ruby main.rb` in p7's root directory.
+
+Finally, direct Chrome to `http://localhost:8080/`, and you should see the restaurant's main page. Remember to restart `main.rb` after changing `controller.rb`.
+
+### Bash for Windows 10 (or anyone else who has issues with Bundler)
+
+The repositories for Bash for Windows 10 are out of date, so doing apt-get bundler is not enough.  You can install bundler through gems, but it won't put the program in your path.  To work around it, you can add bundle to your path (if you know how), run the command by specifying the full path (found by using `gem which bundler`), or doing the following:
+
+- Install SQLite3 with `sudo apt-get install sqlite3` followed by `gem install sqlite3` (you need to do both).
+- Install Sinatra with `gem install sinatra`.
 
 Files
 -----------------
-The project may at first seem complex. However, you needn't feel overwhelmed: there is only **one** source code file that you will ever need to look at, fathom, and make changes to: `controller.rb`. This file contains the core back-end logic, and it is also where the web app's vulnerabilities may be found and fixed. You will also be required to modify the database which is in `data.db`.
+The project may at first seem complex. However, you needn't feel overwhelmed: there is only **one source code** file that you will ever need to look at, fathom, and make changes to: `controller.rb`. This file contains the core back-end logic, and it is also where the web app's vulnerabilities may be found and fixed. You will also be required to interact with and modify the database (which is stored in `data.db`) -- but you will do this through the database's top-level, and we will explain later in this document how to do that.
 
 <!-- MWH: Feels like a bait and switch: You keep saying only modify controller.rb, but then you bring up data.rb. Then, confusingly, this file is not present in the list below. What's going on? -->
 
@@ -49,14 +84,14 @@ Website Structure
 -----------------
 The website serves a set of public-facing pages and a set of private pages. To view the private pages, you must first login (or at any rate, this is the intended behavior, unless this part of the server is buggy!). Once a user has logged in, he or she has either employee or admin privileges, depending on his or her account settings. Then she may be able to see private pages.
 
-The public pages, available from `<website root>` (which, if you're running the server on your own machine, should be `http://localhost:3300`), are:
+The public pages, available from `<website root>` (which, if you're running the server on your own machine, should be `http://localhost:8080`), are:
 
-- `<website root>/index`: the restaurant's main page.
+- `<website root>/`: the restaurant's main page.
 - `<website root>/menu`: displays the restaurant's menu.
 - `<website root>/about`: tells the restaurant's dramatic story.
 - `<website root>/login`: allows employees and admins to log in.
 
-The private pages, available from `<website root>/admin` (which, if you're running the server on your own machine, should be `http://localhost:3300/admin`), are:
+The private pages, available from `<website root>/admin` (which, if you're running the server on your own machine, should be `http://localhost:8080/admin`), are:
 
 - `<website root>/admin/dashboard`: presents **admins only** with a shell for executing commands on the server (not available to employees).
 - `<website root>/admin/menu`: presents **admins and employees** with an interface for viewing and modifying the menu.
@@ -73,16 +108,16 @@ The website's URL structure also supports a kind of API, called a REST API. This
 
 onto operations on resources:
 
-  - Read
-  - Update
-  - Create
-  - Delete
+  - Read(resource)
+  - Update(resource)
+  - Create(resource)
+  - Delete(resource)
 
-This enables a client (web page), running in a browser, to call methods on the back-end (server) simply by sending HTTP messages to the server.
+Thus, a REST API makes it appear to the client as if the data it is interested in is located at certain URLs. This enables a client (web page), running in a browser, to call methods on the back-end (server) simply by sending HTTP messages to specific URLs on the server.
 
-As an example, to view all the menu items from the menu with an ID of 1, we could type the URL `http://localhost:3300/api/item?id=1` in the browser window. Doing this sends a `GET` request to `localhost:3300` for  URL `/api/item` with parameter `id=1`.
+As an example, to view all the menu items from the menu with an ID of 1, we could type the URL `http://localhost:8080/api/item?id=1` in the browser window. Doing this sends a `GET` request to `localhost:8080` for  URL `/api/item` with parameter `id=1`.
 
-A more typical way to use a REST API is to use the command-line program cURL. cURL is a utility for transferring data over networks using various protocols. In particular, we're interested in the HTTP protocol, because that's how we communicate with our application's REST interface.
+We can also interact manually with a REST API by using the command-line program cURL. cURL is a utility for transferring data over networks using various protocols. In particular, we're interested in the HTTP protocol, because that's how we communicate with our application's REST interface.
 
 To send an HTTP message using cURL, the basic command format is:
 
@@ -90,11 +125,11 @@ To send an HTTP message using cURL, the basic command format is:
   
 The HTTP `<method>`s we can use are `GET`, `POST`, `PUT`, and `DELETE`. The `<URL>`s for our REST interface are listed below, along with the parameters they take, and the resources they expose.
 
-So, for the example above, to view all the menu items from the menu with an ID of 1, we would send a `GET` request to the URL `http://localhost:3300/api/item` with parameter `id=1`. To do this, we could use the cURL command `curl -i -X GET "http://localhost:3300/api/item" -F "id=1"`. Each of the parameters is effectively added to the URL
+So, for the example above, to view all the menu items from the menu with an ID of 1, we would send a `GET` request to the URL `http://localhost:8080/api/item` with parameter `id=1`. To do this, we could use the cURL command `curl -i -X GET "http://localhost:8080/api/item" -F "id=1"`. Each of the parameters is effectively added to the URL
 
-To get all of the menus, we could use the cURL command `curl -i -X GET "http://localhost:3300/api/menu"`.
+To get all of the menus, we could use the cURL command `curl -i -X GET "http://localhost:8080/api/menu"`.
 
-To update menu item 1 with a new name, or price, or description, we could use the cURL command `curl -i -X POST "http://localhost:3300/api/item" -F "id=1" -F "menu=0" -F "name=some_name" -F "price=some_price" -F "description=some_description"`
+To update menu item 1 with a new name, or price, or description, we could use the cURL command `curl -i -X POST "http://localhost:8080/api/item" -F "id=1" -F "menu=0" -F "name=some_name" -F "price=some_price" -F "description=some_description"`
 
 - `GET /api/item`
   - **Parameters**: `menu`

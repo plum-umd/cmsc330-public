@@ -9,8 +9,7 @@ require "./controller"
 enable :sessions
 
 configure do
-	set :port, 3300
-
+	set :port, 8080
 end
 
 def initialize
