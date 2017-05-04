@@ -213,7 +213,7 @@ Below is the functionality of each module. All parameters are passed in as strin
   - `escalate(user_id, session_id)` associates a user with a session ID.
   - `authorize(session_id)` returns the user associated with session ID. Otherwise, return `-1`.
   - `delete_session(id)` deletes a session.
-  - `guard(session_id)` if true, the driver allows access to administrator pages. Otherwise, it redirects to login page.
+  - `guard(page)` if true, the driver allows access to administrator pages. Otherwise, it redirects to login page. The parameter is a Ruby symbol, one of `:dashboard`, `:menu`, `:users`, corresponding to the requested page.
 - Terminal
   - `shell(command)` return result of running command.
 
