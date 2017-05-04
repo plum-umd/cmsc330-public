@@ -59,6 +59,15 @@ The repositories for Bash for Windows 10 are out of date, so doing apt-get bundl
 - Install SQLite3 with `sudo apt-get install sqlite3` followed by `gem install sqlite3` (you need to do both).
 - Install Sinatra with `gem install sinatra`.
 
+### Debian / Linux VM
+
+The instructions should be the same as running locally. Depending on your local configuration you may have to install some or all of the following:
+
+- If you don't have bundler, use `gem install bundler`.
+- If you don't have SQLite3, use `sudo apt-get install sqlite3`.
+- If you're getting an issue where Ruby headers cannot be found run `sudo apt-get install ruby-dev`.
+- If you're getting an issue where `sqlite.h` is missing run `sudo apt-get install libsqlite3-dev`.
+
 Files
 -----------------
 The project may at first seem complex. However, you needn't feel overwhelmed: there is only **one source code** file that you will ever need to look at, fathom, and make changes to: `controller.rb`. This file contains the core back-end logic, and it is also where the web app's vulnerabilities may be found and fixed. You will also be required to interact with and modify the database (which is stored in `data.db`) -- but you will do this through the database's top-level, and we will explain later in this document how to do that.
@@ -181,7 +190,7 @@ Controller Class
 ----------------
 The Controller class consists of a series of modules, each defining methods invoked by interactions with the server. The web server basically receives via the URLs described above, and arranges to invoke the relevant methods in these modules; you do not need to worry about these details. 
 
-Below is the functionality of each module. **If a user is not permitted to perform an action the method should do no action and return false.**
+Below is the functionality of each module. All parameters are passed in as strings. **If a user is not permitted to perform an action the method should do no action and return false.**
 
 - Menu
   - `create_menu(name)` creates a new menu with the given name.
@@ -230,7 +239,7 @@ sqlsam|sqlsam|1|80000
 
 Each row is a *record* corresponding to a single user. The columns correspond to: username, password, admin privilege (`0` or a `1` should be understood as a boolean indicating whether or not a given user has admin privilege), and salary.
 
-The web application server will  interact with this database, and use it to determine which pages are OK to serve, based on who is logged in.
+The web application server will interact with this database, and use it to determine which pages are OK to serve, based on who is logged in.
 
 Part 1: Security Invariants
 -------------------
@@ -239,6 +248,8 @@ The rest of this writeup is structured around security invariants, which are cer
 Each of the sub-sections below are independent of one another. We recommend you work through each requirement slowly and determine if the invariant holds or not. If you get stuck on a section you may want to move on.
 
 ### URL and API Authorization
+
+Authentication works by issuing a unique identifier, called a session token, to the client and associating it with a user on login (you can see this in the Sessions table). This session ID is stored in a cookie and is used to verify a client's identity while interacting with the application.
 
 There are two levels of privilege in our web application: administrator, employee.
 
@@ -273,7 +284,7 @@ These actions are subject to the following restrictions:
 - No one, employee nor administrator, may delete their own account.
 - All session tokens are revoked when an account is deleted.
 
-The portions of the REST API that allow modification of the database or viewing and editing of user profile information should be strictly inaccessible except to someone logged-in with an account of the appropriate privilege. For information on how to call the REST API, see the above section entitled API Documentation.
+The portions of the REST API that allow modification of the database or viewing and editing of user profile information should be strictly inaccessible except to someone logged-in with an account of the appropriate privilege. For information on how to call the REST API, see the above section entitled REST API.
 
 ### Shell Restriction
 
@@ -349,6 +360,25 @@ You'll want to generate a salt for each new user that is created which means you
 
 Also note that once you've added a `salt` column to your Users table, you'll need to go through each pre-existing user one by one and generate a salt for each; and then you'll want to use each user's salt to hash their plain-text password. Once you've hashed a pre-existing user's password, overwrite the plain-text version with the new, hashed version. There are many ways of updating a database, but since there are so few users, the easiest and most straightforward way to do it will be by hand, cell by cell, from the `sqlite` top-level. It's quite common to have to migrate a database in this fashion (see [this article](https://en.wikipedia.org/wiki/Schema_migration) if you're interested).
 
+Project Submission and Grading
+------------------
+This project will be graded out of 100 points, all semi-public tests (you can submit as many times as you want, but are not provided with the test cases).
+
+Be sure to follow the project description exactly! Your solution will be graded automatically, so any deviation from the specification will result in lost points.
+
+You **must** submit your project in through the web submission:
+
+- Submit your files directly to the [submit server][submit server] as a zip file by clicking on the submit link in the column "web submission".
+![Where to find the web submission link][web submit link]
+Then, use the submit dialog to submit your zip file containing all of your source files directly.
+![Where to upload the file][web upload example]
+Select your file using the "Browse" button, then press the "Submit project!" button. You will need to put it in a zip file since there are several component files. We provide a script `pack_submission.sh` which you can run to make a zip file containing all of the necessary files.
+
 Academic Integrity
 ------------------
 Please **carefully read** the academic honesty section of the course syllabus. **Any evidence** of impermissible cooperation on projects, use of disallowed materials or resources, or unauthorized use of computer accounts, **will be** submitted to the Student Honor Council, which could result in an XF for the course, or suspension or expulsion from the University. Be sure you understand what you are and what you are not permitted to do in regards to academic integrity when it comes to project assignments. These policies apply to all students, and the Student Honor Council does not consider lack of knowledge of the policies to be a defense for violating them. Full information is found in the course syllabus, which you should review before starting.
+
+[git instructions]: ../git_cheatsheet.md
+[submit server]: submit.cs.umd.edu
+[web submit link]: ../common-images/web_submit.jpg
+[web upload example]: ../common-images/web_upload.jpg

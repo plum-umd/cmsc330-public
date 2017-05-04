@@ -27,6 +27,7 @@ not_found do
 end
 
 before "/*" do
+	session[:id] = -1 if !session[:id]
 	@controller.session_id = session[:id]
 end
 
@@ -50,6 +51,10 @@ get "/logout" do
 	@controller.delete_session(session[:id]) if session[:id]
 	session[:id] = -1
 	redirect to("/")
+end
+
+get "/admin/" do
+	redirect to("/admin/dashboard")
 end
 
 get "/admin/dashboard" do

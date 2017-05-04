@@ -162,7 +162,7 @@ input {
 	letter-spacing:0.1em;
 	text-transform: lowercase;
 	font-size: 12pt;
-	font-variant: small-caps;
+	/*font-variant: small-caps;*/
 }
 
 button {
@@ -307,7 +307,7 @@ span.psw {
 	letter-spacing:0.1em;
 	text-transform: lowercase;
 	font-size: 12pt;
-	font-variant: small-caps;
+	/*font-variant: small-caps;*/
 }
 
 /* Tooltip container */
