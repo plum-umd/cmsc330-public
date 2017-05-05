@@ -200,7 +200,7 @@ Below is the functionality of each module. All parameters are passed in as strin
   - `create_user(name, password, admin, salary)` creates a new user.
   - `read_user()` returns an array containing all users.
   - `update_user(id, name, password, admin, salary)` updates user with given ID.
-  - `delete_user(id)` deletes user with given ID.
+  - `delete_user(id)` deletes user with given ID. Returns with a non-nil value if successful and false otherwise.
 - Access
   - `create_session()` creates a new session and returns session ID.
   - `authenticate(name, password)` if credentials match, returns session ID with escalated privileges. Otherwise, returns `-1`.

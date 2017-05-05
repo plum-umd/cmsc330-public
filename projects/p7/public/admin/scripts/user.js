@@ -274,7 +274,9 @@ function bind_delete() {
         var deleted_item = user_items_all.splice(idx, idx + 1)
 
         // remove the row from the table
-        curr_table.row(td).remove().draw(false)
+        if (data == 1) {
+	        curr_table.row(td).remove().draw(false)
+        }
       },
       error: function(data) {
         console.log("error\nreceived back:")
