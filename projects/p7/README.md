@@ -23,7 +23,7 @@ Running the Project
 
 ### Locally or Cloud9
 
-To install the dependencies, run `bundle install` in the project root directory. Then:
+To install the dependencies, run `bundle install` in the project root directory. If you get a permissions error run `sudo bundle install` and enter your password. Then:
 
 - if you're running locally, run `ruby main.rb`.
 - if you're running on Cloud9, run `ruby main.rb -o $IP`.
@@ -46,24 +46,17 @@ Start an instance of Chrome in the background with `chrome &`. You will be able 
 
 If you're reading this, it may be because you tried to run the server on Grace, but with no luck. If that is the case, you may of course resort to using Cloud9. However, given that your Mac is so well-suited for software development, this is unnecessary -- in fact, we encourage you to try and work on the project locally. If you've never worked locally before, you may have to set some things up first:
 
-- First, you'll want to pick a folder to clone the cmsc330 repo to. Once you've navigated to that folder in the terminal, run `git clone https://github.com/plum-umd/cmsc330.git`.
+- First, you'll want to pick a folder to clone the cmsc330 repo to. Once you've navigated to that folder in the terminal, run `git clone https://github.com/plum-umd/cmsc330-public.git`.
 - Next, you'll want to navigate to p7's root directory and run `bundle install`. If this does not work, it may be because you do not have the `bundle` gem; you may need to first run `gem install bundler`.
 - Now you can run the web server locally, as described above -- just run `ruby main.rb` in p7's root directory.
 
 Finally, direct Chrome to `http://localhost:8080/`, and you should see the restaurant's main page. Remember to restart `main.rb` after changing `controller.rb`.
 
-### Bash for Windows 10 (or anyone else who has issues with Bundler)
-
-The repositories for Bash for Windows 10 are out of date, so doing apt-get bundler is not enough.  You can install bundler through gems, but it won't put the program in your path.  To work around it, you can add bundle to your path (if you know how), run the command by specifying the full path (found by using `gem which bundler`), or doing the following:
-
-- Install SQLite3 with `sudo apt-get install sqlite3` followed by `gem install sqlite3` (you need to do both).
-- Install Sinatra with `gem install sinatra`.
-
-### Debian / Linux VM
+### Bash for Windows 10 / Debian / Linux VM
 
 The instructions should be the same as running locally. Depending on your local configuration you may have to install some or all of the following:
 
-- If you don't have bundler, use `gem install bundler`.
+- If you don't have bundler, use `gem install bundler` (on Bash for Windows 10 you need to specify the full path when you call `bundle` which can be found with `gem which bundler`).
 - If you don't have SQLite3, use `sudo apt-get install sqlite3`.
 - If you're getting an issue where Ruby headers cannot be found run `sudo apt-get install ruby-dev`.
 - If you're getting an issue where `sqlite.h` is missing run `sudo apt-get install libsqlite3-dev`.
@@ -78,14 +71,15 @@ That said, here is a quick outline of the files we have provided, that make up t
 
 - Ruby file (you should edit)
   - **controller.rb**: All your modifications should be made to this file.
+- Database file (you will edit with SQLite top-level)
+  - **data.db**: The database is housed in this file.
 - Provided files (no need to edit, changes will be overwritten!)
   - **public/**: This directory contains all the resources the front-end needs to run (fonts, images, scripts (in JavaScript), styling (in CSS)).
   - **views/**: This directory contains all the HTML files.
   - **main.rb**: This is the driver file that runs the web server.
-  - **data.db**: The database is housed in this file.
   - **Gemfile**: This file contains a list of project dependencies (the server, the database, etc.). These all happen to be Ruby "gems," and bundling them into a "Gemfile" allows us to install them all at once by simply running the command `bundle install` in the same directory.
 - Submission Scripts and Other Files
-  - **submit.rb**: Execute this script to submit your project to the submit server.
+  <!-- - **submit.rb**: Execute this script to submit your project to the submit server. -->
   - **submit.jar** and **.submit**: Don't worry about these files, but make sure you have them.
   - **pack_submission.sh**: Execute this script to zip your project for web submission.
   
@@ -117,10 +111,10 @@ The website's URL structure also supports a kind of API, called a REST API. This
 
 onto operations on resources:
 
-  - Read(resource)
-  - Update(resource)
-  - Create(resource)
-  - Delete(resource)
+  - Read (resource)
+  - Update (resource)
+  - Create (resource)
+  - Delete (resource)
 
 Thus, a REST API makes it appear to the client as if the data it is interested in is located at certain URLs. This enables a client (web page), running in a browser, to call methods on the back-end (server) simply by sending HTTP messages to specific URLs on the server.
 
@@ -138,7 +132,7 @@ So, for the example above, to view all the menu items from the menu with an ID o
 
 To get all of the menus, we could use the cURL command `curl -i -X GET "http://localhost:8080/api/menu"`.
 
-To update menu item 1 with a new name, or price, or description, we could use the cURL command `curl -i -X POST "http://localhost:8080/api/item" -F "id=1" -F "menu=0" -F "name=some_name" -F "price=some_price" -F "description=some_description"`
+To update menu item 1 with a name, or price, or description, we could use the cURL command `curl -i -X POST "http://localhost:8080/api/item" -F "id=1" -F "menu=1" -F "name=some_name" -F "price=some_price" -F "description=some_description"`.
 
 - `GET /api/item`
   - **Parameters**: `menu`
@@ -179,7 +173,7 @@ To update menu item 1 with a new name, or price, or description, we could use th
 - `DELETE /api/user`
   - **Parameters**: `id`
   - **Description**: Deletes user with given id.
-- `GET /api/authenticate`
+- `POST /api/authenticate`
   - **Parameters**: `name`, `password`
   - **Description**: Verify credentials and sets cookie to appropriate session token.
 - `GET /api/terminal`
@@ -206,7 +200,7 @@ Below is the functionality of each module. All parameters are passed in as strin
   - `create_user(name, password, admin, salary)` creates a new user.
   - `read_user()` returns an array containing all users.
   - `update_user(id, name, password, admin, salary)` updates user with given ID.
-  - `delete_user(id)` deletes user with given ID.
+  - `delete_user(id)` deletes user with given ID. Returns with a non-nil value if successful and false otherwise.
 - Access
   - `create_session()` creates a new session and returns session ID.
   - `authenticate(name, password)` if credentials match, returns session ID with escalated privileges. Otherwise, returns `-1`.
@@ -288,7 +282,7 @@ The portions of the REST API that allow modification of the database or viewing 
 
 ### Shell Restriction
 
-The administrator shell must be restricted to the project directory and its contents. Accessing files and directories outside of this directory is forbidden. One should not be allowed to delete `data.db`, `controller.rb`, or `main.rb`. This keeps admins from shooting themselves in the foot or unintentionally destroying the web app. There are a number of methods in Ruby's [Dir](https://ruby-doc.org/core-2.2.0/Dir.html) and [File](https://ruby-doc.org/core-2.2.0/File.html) classes that may come in handy.
+The administrator shell must be restricted to the project directory and its contents. Accessing files and directories outside of this directory is forbidden (e.g. `cat /etc/passwd` is not permitted, but `cat ./controller.rb` is). You may assume the arguments to all commands will be filenames or directories. One should not be allowed to delete `data.db`, `controller.rb`, or `main.rb`. This keeps admins from shooting themselves in the foot or unintentionally destroying the web app. There are a number of methods in Ruby's [Dir](https://ruby-doc.org/core-2.2.0/Dir.html) and [File](https://ruby-doc.org/core-2.2.0/File.html) classes that may come in handy.
 
 **The web shell really has access to your filesystem**, so don't type anything into it that you wouldn't type into your normal terminal. We recommend you commit often with `git`.
 
@@ -300,7 +294,7 @@ It does *not* allow access, for instance, session data, which is also stored in 
 
 ### Code Storage
 
-Employees nor administrators should not be able to store live (unescaped) code (i.e. HTML or JavaScript) in the database. In particular, in the Users, Menu, or Items tables as these are directly displayed by the front end.
+Employees nor administrators should not be able to store live (unescaped) code (i.e. HTML or JavaScript) in the database. In particular, in the Users, Menu, or Items tables as these are directly displayed by the front end. You may find [HTML entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity) to be useful here.
 
 Part 2: Password Hashing
 ------------------------
@@ -369,9 +363,9 @@ Be sure to follow the project description exactly! Your solution will be graded 
 You **must** submit your project in through the web submission:
 
 - Submit your files directly to the [submit server][submit server] as a zip file by clicking on the submit link in the column "web submission".
-![Where to find the web submission link][web submit link]
+![Where to find the web submission link][web submit link]  
 Then, use the submit dialog to submit your zip file containing all of your source files directly.
-![Where to upload the file][web upload example]
+![Where to upload the file][web upload example]  
 Select your file using the "Browse" button, then press the "Submit project!" button. You will need to put it in a zip file since there are several component files. We provide a script `pack_submission.sh` which you can run to make a zip file containing all of the necessary files.
 
 Academic Integrity

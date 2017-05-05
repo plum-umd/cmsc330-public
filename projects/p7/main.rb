@@ -140,8 +140,11 @@ post "/api/user" do
 end
 
 delete "/api/user" do
-	@controller.delete_user(params["id"])
-	@success
+	if @controller.delete_user(params["id"]) then
+		return 1.to_json
+	else
+		return 0.to_json
+	end
 end
 
 post "/api/authenticate" do
