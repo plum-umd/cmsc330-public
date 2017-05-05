@@ -282,7 +282,7 @@ The portions of the REST API that allow modification of the database or viewing 
 
 ### Shell Restriction
 
-The administrator shell must be restricted to the project directory and its contents. Accessing files and directories outside of this directory is forbidden (e.g. `cat /etc/passwd` is not permitted, but `cat ./controller.rb` is). You may assume the arguments to all commands will be filenames. One should not be allowed to delete `data.db`, `controller.rb`, or `main.rb`. This keeps admins from shooting themselves in the foot or unintentionally destroying the web app. There are a number of methods in Ruby's [Dir](https://ruby-doc.org/core-2.2.0/Dir.html) and [File](https://ruby-doc.org/core-2.2.0/File.html) classes that may come in handy.
+The administrator shell must be restricted to the project directory and its contents. Accessing files and directories outside of this directory is forbidden (e.g. `cat /etc/passwd` is not permitted, but `cat ./controller.rb` is). You may assume the arguments to all commands will be filenames or directories. One should not be allowed to delete `data.db`, `controller.rb`, or `main.rb`. This keeps admins from shooting themselves in the foot or unintentionally destroying the web app. There are a number of methods in Ruby's [Dir](https://ruby-doc.org/core-2.2.0/Dir.html) and [File](https://ruby-doc.org/core-2.2.0/File.html) classes that may come in handy.
 
 **The web shell really has access to your filesystem**, so don't type anything into it that you wouldn't type into your normal terminal. We recommend you commit often with `git`.
 
