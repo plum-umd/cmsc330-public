@@ -30,7 +30,7 @@ To install the dependencies, run `bundle install` in the project root directory.
 
 If you don't have bundler installed, you can install it by running `gem install bundler`.
 
-Finally, direct Chrome to `http://localhost:8080/`, and you should see the restaurant's main page. Remember to restart `main.rb` after changing `controller.rb`.
+Finally, direct Chrome to `http://localhost:8080/` (or to your workspace-specific URL on Cloud9), and you should see the restaurant's main page. Remember to restart `main.rb` after changing `controller.rb`.
 
 ### Grace
 
@@ -234,6 +234,8 @@ sqlsam|sqlsam|1|80000
 Each row is a *record* corresponding to a single user. The columns correspond to: username, password, admin privilege (`0` or a `1` should be understood as a boolean indicating whether or not a given user has admin privilege), and salary.
 
 The web application server will interact with this database, and use it to determine which pages are OK to serve, based on who is logged in.
+
+We use the Ruby SQLite3 library to provide access to the database in the `@db` instance variable. Please review [its documentation](http://www.rubydoc.info/gems/sqlite3/) carefully.
 
 Part 1: Security Invariants
 -------------------
