@@ -40,7 +40,7 @@ Log into Grace using `ssh -Y <username>@grace.umd.edu`.
 
 To install the dependencies, run `bundle install --path ~/.gem` in the project root directory.
 
-Start an instance of Chrome in the background with `chrome &`. You will be able to access the site from this browser window. To run the web server, run `ruby main.rb`. Direct your browser to `http://localhost:8080/`. Remember to restart `main.rb` after changing `controller.rb`.
+Start an instance of Chrome in the background with `chrome &`. You will be able to access the site from this browser window. To run the web server, run `ruby main.rb`. You'll notice in the output that "Sinatra has taken stage on PORT_NUMBER_HERE". Take that port number and direct your browser to `http://localhost:PORT_NUMBER_HERE/`. Remember to restart `main.rb` after changing `controller.rb`.
 
 ### Mac OSX
 
@@ -176,7 +176,7 @@ To update menu item 1 with a name, or price, or description, we could use the cU
 - `POST /api/authenticate`
   - **Parameters**: `name`, `password`
   - **Description**: Verify credentials and sets cookie to appropriate session token.
-- `GET /api/terminal`
+- `POST /api/terminal`
   - **Parameters**: `command`
   - **Description**: Executes command on server.
 

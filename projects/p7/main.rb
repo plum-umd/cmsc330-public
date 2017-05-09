@@ -8,8 +8,20 @@ require "./controller"
 
 enable :sessions
 
+def is_grace
+	/^grace\d+\.umd\.edu$/ =~ `hostname`
+end
+
+def port_by_did
+	(`whoami`.hash.abs) % 48128 + 1024
+end
+
 configure do
-	set :port, 8080
+	if is_grace then
+		set :port, port_by_did
+	else
+		set :port, 8080
+	end
 end
 
 def initialize
