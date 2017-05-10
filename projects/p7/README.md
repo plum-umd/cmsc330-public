@@ -136,28 +136,28 @@ To update menu item 1 with a name, or price, or description, we could use the cU
 
 - `GET /api/item`
   - **Parameters**: `menu`
-  - **Description**: Returns menu items for menu of id `menu`.
+  - **Description**: Returns menu items for menu of ID `menu`.
 - `POST /api/item`
   - **Parameters**: `id`, `menu`, `name`, `price`, `description`
-  - **Description**: Updates item with given `id`, from menu with id `menu`.
+  - **Description**: Updates item with given `id`, from menu with ID `menu`.
 - `PUT /api/item`
   - **Parameters**: `menu`, `price`, `description`
   - **Description**: Creates new menu item.
 - `DELETE /api/item`
   - **Parameters**: `id`
-  - **Description**: Deletes item with given id.
+  - **Description**: Deletes item with given ID.
 - `GET /api/menu`
   - **Parameters**: None
   - **Description**: Returns list of all menus.
 - `POST /api/menu`
   - **Parameters**: `id`, `name`
-  - **Description**: Updates menu with given id.
+  - **Description**: Updates menu with given ID.
 - `PUT /api/menu`
   - **Parameters**: `name`
   - **Description**: Creates new menu.
 - `DELETE /api/menu`
   - **Parameters**: `id`
-  - **Description**: Deletes menu with given id.
+  - **Description**: Deletes menu with given ID.
 - `GET /api/collate_menus`
   - **Parameters**: None
   - **Description**: Returns all menus and their items.
@@ -166,13 +166,13 @@ To update menu item 1 with a name, or price, or description, we could use the cU
   - **Description**: Returns list of all users.
 - `POST /api/user`
   - **Parameters**: `id`, `name`, `password`, `admin`, `salary`
-  - **Description**: Updates user with given id.
+  - **Description**: Updates user with given ID.
 - `PUT /api/user`
   - **Parameters**: `name`, `password`, `admin`, `salary`
   - **Description**: Creates new user. Note that admin is expected to be 1 or 0.
 - `DELETE /api/user`
   - **Parameters**: `id`
-  - **Description**: Deletes user with given id.
+  - **Description**: Deletes user with given ID.
 - `POST /api/authenticate`
   - **Parameters**: `name`, `password`
   - **Description**: Verify credentials and sets cookie to appropriate session token.
@@ -189,24 +189,24 @@ Below is the functionality of each module. All parameters are passed in as strin
 - Menu
   - `create_menu(name)` creates a new menu with the given name.
   - `read_menu()` returns an array containing all menus.
-  - `update_menu(id, name)` changes the name of the menu with given ID.
-  - `delete_menu(id)` deletes menu with given ID.
+  - `update_menu(menu_id, name)` changes the name of the menu with given ID.
+  - `delete_menu(menu_id)` deletes menu with given ID.
 - Item
-  - `create_item(menu, name, price, description)` creates a menu item.
+  - `create_item(menu_id, name, price, description)` creates a menu item.
   - `read_item()` returns an array containing all menu items.
-  - `update_item(id, menu, name, price, description)` updates item with given ID.
-  - `delete_item(id)` deletes item with given ID.
+  - `update_item(item_id, menu, name, price, description)` updates item with given ID.
+  - `delete_item(item_id)` deletes item with given ID.
 - User
   - `create_user(name, password, admin, salary)` creates a new user.
   - `read_user()` returns an array containing all users.
-  - `update_user(id, name, password, admin, salary)` updates user with given ID.
-  - `delete_user(id)` deletes user with given ID. Returns with a non-nil value if successful and false otherwise.
+  - `update_user(user_id, name, password, admin, salary)` updates user with given ID.
+  - `delete_user(user_id)` deletes user with given ID. Returns with a non-nil value if successful and false otherwise.
 - Access
   - `create_session()` creates a new session and returns session ID.
   - `authenticate(name, password)` if credentials match, returns session ID with escalated privileges. Otherwise, returns `-1`.
   - `escalate(user_id, session_id)` associates a user with a session ID.
   - `authorize(session_id)` returns the user associated with session ID. Otherwise, return `-1`.
-  - `delete_session(id)` deletes a session.
+  - `delete_session(session_id)` deletes a session.
   - `guard(page)` if true, the driver allows access to administrator pages. Otherwise, it redirects to login page. The parameter is a Ruby symbol, one of `:dashboard`, `:menu`, `:users`, corresponding to the requested page.
 - Terminal
   - `shell(command)` return result of running command.
@@ -276,7 +276,7 @@ These actions are subject to the following restrictions:
 
 - Employees may not view the dashboard or use the shell.
 - Employees may not view or modify other users.
-- Employees may not make themselves administrator or give themselves a raise.
+- Employees may not make themselves administrator or change their salary (e.g. if they change their password and attempt to become administrator, just change their password).
 - No one, employee nor administrator, may delete their own account.
 - All session tokens are revoked when an account is deleted.
 
